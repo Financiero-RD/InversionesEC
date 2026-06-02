@@ -394,7 +394,7 @@ function renderAll() {
 }
 
 // Lee el JSON del mismo repositorio — completamente gratis
-fetch('../data/tasas.json')
+fetch('https://raw.githubusercontent.com/Financiero-RD/InversionesEC/main/data/tasas.json')
   .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
   .then(d => { DATA = d; renderAll(); })
   .catch(err => {
