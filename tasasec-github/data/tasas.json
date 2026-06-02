@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "fechaActualizacion": "Junio 2026",
+    "fechaISO": "2026-06-02",
+    "tasaReferencialBCE": 5.01,
+    "fuentePrincipal": "Tarifarios oficiales verificados + BCE",
+    "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
+    "totalInstituciones": 13,
+    "promedioBancos": 5.24,
+    "promedioCoops": 7.83
+  },
+  "bancos": [
+    {
+      "id": "pichincha", "nombre": "Banco Pichincha", "tipo": "banco",
+      "calificacion": "AAA-", "seguro": 32000, "montoMin": 500,
+      "web": "pichincha.com", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Descarga la app Banco Pichincha o visita una agencia","Ve a Inversiones → Depósito a Plazo Fijo","Elige monto (mín $500) y plazo","Confirma la tasa y firma digitalmente","Recibe tu certificado por correo","Al vencer, capital + intereses se acreditan automáticamente"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":2.65,"agencia":2.40},
+        {"plazo":"61–90 días","digital":3.20,"agencia":2.95},
+        {"plazo":"91–180 días","digital":4.10,"agencia":3.85},
+        {"plazo":"181–360 días","digital":4.95,"agencia":4.70},
+        {"plazo":"361+ días","digital":5.70,"agencia":5.40}
+      ]
+    },
+    {
+      "id": "guayaquil", "nombre": "Banco Guayaquil", "tipo": "banco",
+      "calificacion": "AA+", "seguro": 32000, "montoMin": 500,
+      "web": "bancoguayaquil.com", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ingresa a bancoguayaquil.com o descarga la app","Ve a Inversiones → Depósito a Plazo","Ingresa monto mínimo $500 y selecciona plazo","Acepta los términos y confirma","Recibe certificado digital en tu correo","Monitorea el vencimiento desde banca en línea"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":3.45,"agencia":3.10},
+        {"plazo":"61–90 días","digital":3.80,"agencia":3.50},
+        {"plazo":"91–180 días","digital":4.50,"agencia":4.20},
+        {"plazo":"181–360 días","digital":5.25,"agencia":4.95},
+        {"plazo":"361+ días","digital":5.85,"agencia":5.50}
+      ]
+    },
+    {
+      "id": "produbanco", "nombre": "Produbanco", "tipo": "banco",
+      "calificacion": "AA", "seguro": 32000, "montoMin": 100,
+      "web": "produbanco.com.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a produbanco.com.ec → Personas → Inversiones","Selecciona Póliza de Acumulación","Mínimo $100 — uno de los más accesibles","Elige plazo y confirma tasa","Firma electrónica desde la app","Renovación automática opcional al vencer"],
+      "tasas": [
+        {"plazo":"30–60 días","digital":3.90,"agencia":3.60},
+        {"plazo":"61–90 días","digital":4.20,"agencia":3.90},
+        {"plazo":"91–180 días","digital":4.75,"agencia":4.45},
+        {"plazo":"181–360 días","digital":5.40,"agencia":5.10},
+        {"plazo":"361–450 días","digital":5.90,"agencia":5.60}
+      ]
+    },
+    {
+      "id": "internacional", "nombre": "Banco Internacional", "tipo": "banco",
+      "calificacion": "AA", "seguro": 32000, "montoMin": 1000,
+      "web": "bancointernacional.com.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Visita bancointernacional.com.ec","Abre cuenta corriente o de ahorros","Ve a Inversiones → Plazo Fijo","Mínimo $1,000 requerido","Confirma tasa y firma contrato","Certificado disponible en banca digital"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":2.55,"agencia":2.30},
+        {"plazo":"61–90 días","digital":3.10,"agencia":2.85},
+        {"plazo":"91–180 días","digital":3.80,"agencia":3.55},
+        {"plazo":"181–360 días","digital":4.60,"agencia":4.35},
+        {"plazo":"361+ días","digital":4.95,"agencia":4.70}
+      ]
+    },
+    {
+      "id": "solidario", "nombre": "Banco Solidario", "tipo": "banco",
+      "calificacion": "A+", "seguro": 32000, "montoMin": 1000,
+      "web": "banco-solidario.com", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a banco-solidario.com","Abre cuenta de ahorros (100% digital)","Solicita Inversión a Plazo desde la app","Mínimo $1,000 — elige plazo mínimo 31 días","Confirma con firma electrónica","Retiras al vencimiento con intereses incluidos"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":3.50,"agencia":3.20},
+        {"plazo":"61–90 días","digital":4.00,"agencia":3.70},
+        {"plazo":"91–180 días","digital":4.80,"agencia":4.50},
+        {"plazo":"181–360 días","digital":5.50,"agencia":5.20},
+        {"plazo":"365+ días","digital":6.01,"agencia":5.70}
+      ]
+    },
+    {
+      "id": "pacifico", "nombre": "Banco del Pacífico", "tipo": "banco",
+      "calificacion": "AA+", "seguro": 32000, "montoMin": 500,
+      "web": "bancodelpacífico.com", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Banco estatal — mayor estabilidad","Ve a bancodelpacífico.com o descarga la app","Solicita Depósito a Plazo Fijo","Mínimo $500, plazo desde 30 días","Elige si quieres intereses al vencer o periódicos","Certificado disponible en tu correo"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":2.80,"agencia":2.50},
+        {"plazo":"61–90 días","digital":3.30,"agencia":3.00},
+        {"plazo":"91–180 días","digital":4.00,"agencia":3.75},
+        {"plazo":"181–360 días","digital":4.80,"agencia":4.55},
+        {"plazo":"361+ días","digital":5.50,"agencia":5.20}
+      ]
+    },
+    {
+      "id": "ruminhahui", "nombre": "Banco General Rumiñahui (BGR)", "tipo": "banco",
+      "calificacion": "AA-", "seguro": 32000, "montoMin": 500,
+      "web": "bgr.com.ec", "fechaMes": "Junio 2026", "esNuevo": true,
+      "pasos": ["Ve a bgr.com.ec → Inversiones → BGR Rentaplazos","También puedes invertir en línea desde 'Invierte en Línea'","Banco enfocado en militares pero abierto al público general","Mínimo $500 — lleva cédula","Elige plazo y confirma tasa desde la app BGR Digital","Intereses pagados al vencimiento o periódicamente"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":3.25,"agencia":3.00},
+        {"plazo":"61–90 días","digital":3.75,"agencia":3.50},
+        {"plazo":"91–180 días","digital":4.50,"agencia":4.25},
+        {"plazo":"181–360 días","digital":5.20,"agencia":4.95},
+        {"plazo":"361+ días","digital":5.75,"agencia":5.50}
+      ]
+    }
+  ],
+  "cooperativas": [
+    {
+      "id": "policia", "nombre": "Coop. Policía Nacional", "tipo": "cooperativa",
+      "calificacion": "AA", "seguro": 32000, "montoMin": 200,
+      "web": "cpn.fin.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a cpn.fin.ec o visita una agencia","Solicita membresía como socio (abierto al público)","Lleva cédula, planilla y monto mínimo $200","Abre cuenta de ahorros","Solicita Certificado de Depósito a Plazo","Mejor tasa del sistema: hasta 9% anual a 361+ días"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":5.50,"agencia":5.50},
+        {"plazo":"61–90 días","digital":6.50,"agencia":6.50},
+        {"plazo":"91–180 días","digital":7.50,"agencia":7.50},
+        {"plazo":"181–360 días","digital":8.25,"agencia":8.25},
+        {"plazo":"361+ días","digital":9.00,"agencia":9.00}
+      ]
+    },
+    {
+      "id": "jep", "nombre": "JEP", "tipo": "cooperativa",
+      "calificacion": "AA", "seguro": 32000, "montoMin": 100,
+      "web": "jep.coop", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a jep.coop o cualquier agencia JEP","Abre cuenta con solo $100","Solicita certificado de depósito a plazo","Más plazo = más tasa (hasta 8% a 361+ días)","Recibe certificado físico o digital","Al vencer: capital + intereses depositados automáticamente"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":4.50,"agencia":4.50},
+        {"plazo":"61–90 días","digital":5.50,"agencia":5.50},
+        {"plazo":"91–180 días","digital":6.50,"agencia":6.50},
+        {"plazo":"181–360 días","digital":7.25,"agencia":7.25},
+        {"plazo":"361+ días","digital":8.00,"agencia":8.00}
+      ]
+    },
+    {
+      "id": "jardin", "nombre": "Jardín Azuayo", "tipo": "cooperativa",
+      "calificacion": "AA-", "seguro": 32000, "montoMin": 50,
+      "web": "jardinazuayo.fin.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a jardinazuayo.fin.ec — desde solo $50","Abre cuenta como socio en cualquier agencia","Solicita Depósito a Plazo","Elige intereses mensuales o al vencer","Opera en Azuay, Guayas, Pichincha y más","Calificación AA- — una de las mejores del sistema cooperativo"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":4.20,"agencia":4.20},
+        {"plazo":"61–90 días","digital":5.20,"agencia":5.20},
+        {"plazo":"91–180 días","digital":6.20,"agencia":6.20},
+        {"plazo":"181–360 días","digital":7.00,"agencia":7.00},
+        {"plazo":"361+ días","digital":7.90,"agencia":7.90}
+      ]
+    },
+    {
+      "id": "cooprogreso", "nombre": "Cooprogreso", "tipo": "cooperativa",
+      "calificacion": "AA-", "seguro": 32000, "montoMin": 200,
+      "web": "cooprogreso.fin.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a cooprogreso.fin.ec","Busca la agencia más cercana (cobertura nacional)","Lleva cédula y $200 mínimo","Solicita Póliza de Inversión a Plazo","Confirma tasa y firma contrato","Certificado disponible en pocos días"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":4.00,"agencia":4.00},
+        {"plazo":"61–90 días","digital":5.00,"agencia":5.00},
+        {"plazo":"91–180 días","digital":6.00,"agencia":6.00},
+        {"plazo":"181–360 días","digital":6.80,"agencia":6.80},
+        {"plazo":"361+ días","digital":7.60,"agencia":7.60}
+      ]
+    },
+    {
+      "id": "alianza", "nombre": "Alianza del Valle", "tipo": "cooperativa",
+      "calificacion": "A+", "seguro": 32000, "montoMin": 100,
+      "web": "alianzadelvalle.fin.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a alianzadelvalle.fin.ec","Agencias en Quito, valles y más","Abre cuenta con mínimo $100","Solicita Depósito a Plazo Fijo","Elige tu plazo ideal","Intereses al vencimiento o periódicos"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":4.50,"agencia":4.50},
+        {"plazo":"61–90 días","digital":5.25,"agencia":5.25},
+        {"plazo":"91–180 días","digital":6.25,"agencia":6.25},
+        {"plazo":"181–360 días","digital":7.00,"agencia":7.00},
+        {"plazo":"361+ días","digital":7.75,"agencia":7.75}
+      ]
+    },
+    {
+      "id": "octubre", "nombre": "29 de Octubre", "tipo": "cooperativa",
+      "calificacion": "A+", "seguro": 32000, "montoMin": 200,
+      "web": "29deoctubre.fin.ec", "fechaMes": "Junio 2026", "esNuevo": false,
+      "pasos": ["Ve a 29deoctubre.fin.ec","34 agencias a nivel nacional","Lleva cédula y planilla de servicios","Abre cuenta como socio","Solicita Certificado de Depósito a Plazo","Monitorea desde su app móvil"],
+      "tasas": [
+        {"plazo":"31–60 días","digital":4.50,"agencia":4.50},
+        {"plazo":"61–90 días","digital":5.25,"agencia":5.25},
+        {"plazo":"91–180 días","digital":6.25,"agencia":6.25},
+        {"plazo":"181–360 días","digital":7.00,"agencia":7.00},
+        {"plazo":"361+ días","digital":7.75,"agencia":7.75}
+      ]
+    }
+  ]
+}
