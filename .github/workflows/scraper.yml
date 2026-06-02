@@ -19,12 +19,12 @@ jobs:
         run: pip install requests beautifulsoup4 lxml
 
       - name: Ejecutar scraper
-        run: python tasasec-github/tasasec-github/scraper.py
+        run: python scraper.py
 
       - name: Commit datos
         run: |
           git config --local user.email "bot@tasasec.ec"
           git config --local user.name "TasasEC Bot"
-          git add tasasec-github/tasasec-github/data/tasas.json
+          git add data/tasas.json
           git diff --staged --quiet || git commit -m "📊 Tasas $(date '+%B %Y')"
           git push
