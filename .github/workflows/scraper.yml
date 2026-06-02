@@ -1,0 +1,23 @@
+name: Actualizar Tasas Ecuador
+
+on:
+  schedule:
+    - cron: '0 13 2 * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 lxml
+      - run: python tasasec-github/scraper.py
+      - run: |
+          git config --local user.email "bot@tasasec.ec"
+          git config --local user.name "TasasEC Bot"
+          git add tasasec-github/data/tasas.json
+          git diff --staged --quiet || git commit -m "📊 Tasas actualizadas $(date '+%B %Y')"
+          git push
