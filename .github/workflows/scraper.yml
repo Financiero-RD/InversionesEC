@@ -10,14 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install requests beautifulsoup4 lxml
-      - run: python tasasec-github/scraper.py
-      - run: |
+
+      - name: Instalar dependencias
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Ejecutar scraper
+        run: python tasasec-github/tasasec-github/scraper.py
+
+      - name: Commit datos
+        run: |
           git config --local user.email "bot@tasasec.ec"
           git config --local user.name "TasasEC Bot"
-          git add tasasec-github/data/tasas.json
-          git diff --staged --quiet || git commit -m "📊 Tasas actualizadas $(date '+%B %Y')"
+          git add tasasec-github/tasasec-github/data/tasas.json
+          git diff --staged --quiet || git commit -m "📊 Tasas $(date '+%B %Y')"
           git push
