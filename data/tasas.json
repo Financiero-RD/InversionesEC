@@ -1,4 +1,17 @@
 {
+  "meta": {
+    "fechaActualizacion": "June 2026",
+    "fechaISO": "2026-06-04",
+    "tasaReferencialBCE": null,
+    "fuentePrincipal": "Tarifarios oficiales verificados + BCE",
+    "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
+    "totalInstituciones": 13,
+    "totalCuentasAhorro": 9,
+    "promedioBancos": 5.67,
+    "promedioCoops": 8.0,
+    "mejorAhorro": 6.0,
+    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días."
+  },
   "bancos": [
     {
       "id": "pichincha",
@@ -8,13 +21,15 @@
       "seguro": 32000,
       "montoMin": 500,
       "web": "pichincha.com",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Descarga la app Banco Pichincha o visita una agencia",
-        "Ingresa a Inversiones → Depósito a Plazo Fijo",
-        "Elige monto (mín $500) y plazo",
-        "Confirma la tasa y firma digitalmente",
-        "Recibe tu certificado por correo",
-        "Al vencer, capital + intereses se acreditan automáticamente"
+        "Descarga la app o visita agencia",
+        "Ve a Inversiones → Depósito a Plazo Fijo",
+        "Mínimo $500, elige plazo",
+        "Confirma tasa y firma digital",
+        "Recibe certificado por correo",
+        "Capital + intereses al vencer"
       ],
       "tasas": [
         {
@@ -42,9 +57,7 @@
           "digital": 5.7,
           "agencia": 5.4
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "guayaquil",
@@ -54,13 +67,15 @@
       "seguro": 32000,
       "montoMin": 500,
       "web": "bancoguayaquil.com",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ingresa a bancoguayaquil.com o descarga la app",
-        "Ve a Inversiones → Depósito a Plazo",
-        "Ingresa monto mínimo $500 y selecciona plazo",
-        "Acepta los términos y confirma",
-        "Recibe certificado digital en tu correo",
-        "Monitorea el vencimiento desde banca en línea"
+        "App o web bancoguayaquil.com",
+        "Inversiones → Depósito a Plazo",
+        "Mínimo $500, selecciona plazo",
+        "Acepta términos y confirma",
+        "Certificado digital en tu correo",
+        "Monitorea desde banca en línea"
       ],
       "tasas": [
         {
@@ -88,9 +103,7 @@
           "digital": 5.85,
           "agencia": 5.5
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "produbanco",
@@ -100,13 +113,15 @@
       "seguro": 32000,
       "montoMin": 100,
       "web": "produbanco.com.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a produbanco.com.ec → Personas → Inversiones",
+        "produbanco.com.ec → Personas → Inversiones",
         "Selecciona Póliza de Acumulación",
-        "Mínimo $100 — uno de los más accesibles",
+        "Mínimo $100",
         "Elige plazo y confirma tasa",
         "Firma electrónica desde la app",
-        "Renovación automática opcional al vencer"
+        "Renovación automática opcional"
       ],
       "tasas": [
         {
@@ -134,9 +149,7 @@
           "digital": 5.9,
           "agencia": 5.6
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "internacional",
@@ -146,13 +159,15 @@
       "seguro": 32000,
       "montoMin": 1000,
       "web": "bancointernacional.com.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Visita bancointernacional.com.ec",
-        "Abre cuenta corriente o de ahorros",
-        "Ve a Inversiones → Plazo Fijo",
-        "Mínimo $1,000 requerido",
-        "Confirma tasa y firma contrato",
-        "Certificado disponible en banca digital"
+        "bancointernacional.com.ec",
+        "Abre cuenta o usa la existente",
+        "Inversiones → Plazo Fijo",
+        "Mínimo $1,000",
+        "Confirma tasa y firma",
+        "Certificado en banca digital"
       ],
       "tasas": [
         {
@@ -180,9 +195,7 @@
           "digital": 4.95,
           "agencia": 4.7
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "solidario",
@@ -192,13 +205,15 @@
       "seguro": 32000,
       "montoMin": 1000,
       "web": "banco-solidario.com",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a banco-solidario.com",
-        "Abre cuenta de ahorros (puede hacerse 100% digital)",
-        "Solicita Inversión a Plazo desde la app",
-        "Mínimo $1,000 — elige plazo mínimo 31 días",
-        "Confirma con firma electrónica",
-        "Retiras al vencimiento con intereses incluidos"
+        "banco-solidario.com",
+        "Cuenta de ahorros 100% digital",
+        "Inversión a Plazo desde la app",
+        "Mínimo $1,000, plazo mín. 31 días",
+        "Firma electrónica",
+        "Retiras al vencer"
       ],
       "tasas": [
         {
@@ -226,9 +241,7 @@
           "digital": 6.01,
           "agencia": 5.7
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "pacifico",
@@ -238,13 +251,15 @@
       "seguro": 32000,
       "montoMin": 500,
       "web": "bancodelpacífico.com",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Banco estatal — mayor estabilidad institucional",
-        "Ve a bancodelpacífico.com o descarga la app",
-        "Solicita Depósito a Plazo Fijo",
-        "Mínimo $500, plazo desde 30 días",
-        "Elige si quieres intereses al vencer o periódicos",
-        "Certificado disponible en tu correo"
+        "Banco estatal — alta estabilidad",
+        "bancodelpacífico.com o app",
+        "Depósito a Plazo Fijo",
+        "Mínimo $500 desde 30 días",
+        "Elige intereses al vencer o periódicos",
+        "Certificado en tu correo"
       ],
       "tasas": [
         {
@@ -272,9 +287,7 @@
           "digital": 5.5,
           "agencia": 5.2
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "ruminhahui",
@@ -282,15 +295,16 @@
       "tipo": "banco",
       "calificacion": "AA-",
       "seguro": 32000,
-      "montoMin": 500,
+      "montoMin": 200,
       "web": "bgr.com.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a bgr.com.ec → Inversiones → BGR Rentaplazos",
-        "También puedes invertir en línea desde 'Invierte en Línea'",
-        "Banco enfocado en militares y fuerzas armadas pero abierto al público",
-        "Mínimo $500 — lleva cédula",
-        "Elige plazo y confirma tasa desde la app BGR Digital",
-        "Intereses pagados al vencimiento o periódicamente"
+        "bgr.com.ec → Inversiones → BGR Rentaplazos",
+        "También: 'Invierte en Línea' digital",
+        "Mínimo $200",
+        "Elige plazo y confirma tasa en app BGR Digital",
+        "Intereses al vencer o periódicamente"
       ],
       "tasas": [
         {
@@ -318,9 +332,7 @@
           "digital": 5.75,
           "agencia": 5.5
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     }
   ],
   "cooperativas": [
@@ -332,13 +344,15 @@
       "seguro": 32000,
       "montoMin": 200,
       "web": "cpn.fin.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a cpn.fin.ec o visita una agencia",
-        "Solicita membresía como socio (abierto al público general)",
-        "Lleva cédula, planilla y monto mínimo $200",
+        "cpn.fin.ec o agencia",
+        "Membresía como socio (abierta al público)",
+        "Cédula + planilla + $200",
         "Abre cuenta de ahorros",
-        "Solicita Certificado de Depósito a Plazo",
-        "Mejor tasa del sistema: hasta 9% anual a 361+ días"
+        "Certificado de Depósito a Plazo",
+        "Mejor tasa del sistema: 9% a 361+ días"
       ],
       "tasas": [
         {
@@ -366,9 +380,7 @@
           "digital": 9.0,
           "agencia": 9.0
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "jep",
@@ -378,13 +390,15 @@
       "seguro": 32000,
       "montoMin": 100,
       "web": "jep.coop",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a jep.coop o cualquier agencia JEP a nivel nacional",
-        "Abre cuenta con solo $100 — muy accesible",
-        "Solicita certificado de depósito a plazo",
-        "Más plazo = más tasa (hasta 8% a 361+ días)",
-        "Recibe certificado físico o digital",
-        "Al vencer: capital + intereses depositados automáticamente"
+        "jep.coop o cualquier agencia",
+        "Cuenta desde $100",
+        "Certificado de depósito a plazo",
+        "Más plazo = más tasa (hasta 8%)",
+        "Certificado físico o digital",
+        "Capital + intereses al vencer"
       ],
       "tasas": [
         {
@@ -412,9 +426,7 @@
           "digital": 8.0,
           "agencia": 8.0
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "jardin",
@@ -424,13 +436,14 @@
       "seguro": 32000,
       "montoMin": 50,
       "web": "jardinazuayo.fin.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a jardinazuayo.fin.ec — desde solo $50",
-        "Abre cuenta como socio en cualquier agencia",
-        "Solicita Depósito a Plazo",
-        "Elige si quieres intereses mensuales o al vencer",
-        "Opera en Azuay, Guayas, Pichincha y más",
-        "Excelente calificación AA- para una cooperativa"
+        "jardinazuayo.fin.ec — desde $50",
+        "Cuenta como socio",
+        "Depósito a Plazo",
+        "Intereses mensuales o al vencer",
+        "Opera en varias provincias"
       ],
       "tasas": [
         {
@@ -458,9 +471,7 @@
           "digital": 7.9,
           "agencia": 7.9
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "cooprogreso",
@@ -470,13 +481,15 @@
       "seguro": 32000,
       "montoMin": 200,
       "web": "cooprogreso.fin.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a cooprogreso.fin.ec",
-        "Busca la agencia más cercana (cobertura nacional)",
-        "Lleva cédula y $200 mínimo",
-        "Solicita Póliza de Inversión a Plazo",
-        "Confirma tasa y firma contrato",
-        "Certificado disponible en pocos días"
+        "cooprogreso.fin.ec",
+        "Agencia más cercana",
+        "Cédula + $200",
+        "Póliza de Inversión",
+        "Confirma y firma",
+        "Certificado en días"
       ],
       "tasas": [
         {
@@ -504,9 +517,7 @@
           "digital": 7.6,
           "agencia": 7.6
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "alianza",
@@ -516,13 +527,15 @@
       "seguro": 32000,
       "montoMin": 100,
       "web": "alianzadelvalle.fin.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a alianzadelvalle.fin.ec",
-        "Agencias en Quito, valles y más zonas",
-        "Abre cuenta con mínimo $100",
-        "Solicita Depósito a Plazo Fijo",
-        "Elige tu plazo ideal",
-        "Intereses al vencimiento o periódicos según elijas"
+        "alianzadelvalle.fin.ec",
+        "Quito y valles",
+        "Cuenta desde $100",
+        "Depósito a Plazo",
+        "Elige plazo",
+        "Intereses al vencer"
       ],
       "tasas": [
         {
@@ -550,9 +563,7 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     },
     {
       "id": "octubre",
@@ -562,13 +573,15 @@
       "seguro": 32000,
       "montoMin": 200,
       "web": "29deoctubre.fin.ec",
+      "fechaMes": "June 2026",
+      "esNuevo": false,
       "pasos": [
-        "Ve a 29deoctubre.fin.ec",
-        "34 agencias a nivel nacional",
-        "Lleva cédula y planilla de servicios",
-        "Abre cuenta como socio (vinculada a Fuerzas Armadas pero abierta)",
-        "Solicita Certificado de Depósito a Plazo",
-        "Monitorea desde su app móvil"
+        "29deoctubre.fin.ec",
+        "34 agencias nacionales",
+        "Cédula + planilla",
+        "Cuenta como socio",
+        "Certificado a Plazo",
+        "App móvil disponible"
       ],
       "tasas": [
         {
@@ -596,19 +609,283 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ],
-      "fechaMes": "June 2026",
-      "esNuevo": false
+      ]
     }
   ],
-  "meta": {
-    "fechaActualizacion": "June 2026",
-    "fechaISO": "2026-06-02",
-    "tasaReferencialBCE": null,
-    "fuentePrincipal": "Tarifarios oficiales verificados + BCE",
-    "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
-    "totalInstituciones": 13,
-    "promedioBancos": 5.67,
-    "promedioCoops": 8.0
-  }
+  "cuentasAhorro": [
+    {
+      "id": "pichincha_flexible",
+      "banco": "Banco Pichincha",
+      "producto": "Cuenta Flexible",
+      "tipo": "ahorro_especial",
+      "tasa": 4.75,
+      "liquidez": "inmediata",
+      "montoMin": 0,
+      "capitalizacion": "diaria",
+      "restriccion": null,
+      "web": "pichincha.com",
+      "color": "#FF6B00",
+      "descripcion": "Cuenta de ahorro con tasa 4.75% anual, liquidez total. Sin monto mínimo. Interés capitalizado diariamente.",
+      "ventajas": [
+        "Retiros ilimitados sin penalidad",
+        "Sin monto mínimo",
+        "Interés diario capitalizado",
+        "100% digital"
+      ],
+      "desventajas": [
+        "Menor tasa que una póliza",
+        "Solo para ahorro del día a día"
+      ],
+      "pasos": [
+        "Descarga la app Banco Pichincha",
+        "Abre la Cuenta Flexible desde la app (100% digital)",
+        "No necesitas monto mínimo inicial",
+        "El interés se acredita diariamente sobre tu saldo",
+        "Puedes retirar o depositar cuando quieras sin penalidad"
+      ]
+    },
+    {
+      "id": "internacional_rentable",
+      "banco": "Banco Internacional",
+      "producto": "Cuenta Ahorro Rentable",
+      "tipo": "ahorro_especial",
+      "tasa": 5.0,
+      "tasaBase": 4.5,
+      "liquidez": "inmediata",
+      "montoMin": 1000,
+      "capitalizacion": "diaria",
+      "restriccion": "Saldo mínimo $1,000 para tasa 5%. Saldos menores: 4.5%",
+      "web": "bancointernacional.com.ec/producto/cuenta-rentable",
+      "color": "#003087",
+      "descripcion": "Cuenta de ahorro con hasta 5% anual. Retiros ilimitados sin penalidad. Interés diario acreditado mensualmente.",
+      "ventajas": [
+        "Hasta 5% anual con liquidez total",
+        "Retiros ilimitados",
+        "Sin penalidades",
+        "Mejor tasa de ahorro flexible del sistema bancario"
+      ],
+      "desventajas": [
+        "Requiere $1,000 para tasa máxima",
+        "Saldos < $1,000 solo tienen 4.5%"
+      ],
+      "pasos": [
+        "Ve a bancointernacional.com.ec",
+        "Busca 'Cuenta Ahorro Rentable'",
+        "Abre con tu cédula (proceso digital disponible)",
+        "Deposita mínimo $1,000 para acceder a la tasa del 5%",
+        "El interés se calcula diario y se acredita cada mes",
+        "Retira cuando necesites — sin penalidad"
+      ]
+    },
+    {
+      "id": "pichincha_ahorro_normal",
+      "banco": "Banco Pichincha",
+      "producto": "Cuenta de Ahorros tradicional",
+      "tipo": "ahorro_tradicional",
+      "tasa": 4.75,
+      "liquidez": "inmediata",
+      "montoMin": 0,
+      "capitalizacion": "diaria",
+      "restriccion": null,
+      "web": "pichincha.com",
+      "color": "#FF6B00",
+      "descripcion": "Cuenta de ahorros estándar con tasa 4.75% TEA. Acceso a red de cajeros, app y banca en línea.",
+      "ventajas": [
+        "Red más grande del país",
+        "App completa",
+        "Sin monto mínimo"
+      ],
+      "desventajas": [
+        "Igual tasa que Cuenta Flexible",
+        "No diferencial para montos altos"
+      ],
+      "pasos": [
+        "Ve a pichincha.com o descarga la app",
+        "Abre cuenta de ahorros con solo tu cédula",
+        "Depósito inicial voluntario",
+        "Accede a todos los canales: app, web, cajeros, agencias",
+        "Interés acreditado mensualmente sobre saldo promedio"
+      ]
+    },
+    {
+      "id": "bgr_salud",
+      "banco": "Banco General Rumiñahui (BGR)",
+      "producto": "Cuenta Salud BGR",
+      "tipo": "ahorro_especial",
+      "tasa": 6.0,
+      "liquidez": "inmediata",
+      "montoMin": 0,
+      "capitalizacion": "diaria",
+      "restriccion": "EXCLUSIVA para profesionales de la salud (médicos, enfermeros, etc.)",
+      "web": "bancasalud.bgr.com.ec",
+      "color": "#1B5E8A",
+      "descripcion": "La mejor tasa de ahorro del mercado: 6% anual. Exclusiva para personal de salud. Sin monto mínimo. Liquidez total.",
+      "ventajas": [
+        "6% anual — mejor tasa de ahorro del Ecuador",
+        "Sin monto mínimo",
+        "Liquidez inmediata",
+        "Interés capitalizado diariamente",
+        "Apertura digital en menos de 10 minutos"
+      ],
+      "desventajas": [
+        "Solo para profesionales de la salud",
+        "Requiere demostrar ejercicio activo en salud"
+      ],
+      "pasos": [
+        "Ve a bancasalud.bgr.com.ec",
+        "Verifica que seas profesional de salud activo (dependiente o independiente)",
+        "Completa el formulario digital con tu cédula",
+        "Apertura en menos de 10 minutos sin monto mínimo",
+        "El 6% anual se capitaliza y acredita diariamente",
+        "Retira en cualquier momento sin penalidad"
+      ]
+    },
+    {
+      "id": "bgr_ahorro_programado",
+      "banco": "Banco General Rumiñahui (BGR)",
+      "producto": "BGR Ahorro Programado (Dibujando tu Futuro)",
+      "tipo": "ahorro_programado",
+      "tasa": 2.0,
+      "tasaBono": 4.0,
+      "liquidez": "con restricción",
+      "montoMin": 0,
+      "capitalizacion": "periódica",
+      "restriccion": "Bono del 4% adicional solo si cumples meta de ahorro. Retiros > 20% anulan el bono.",
+      "web": "bgr.com.ec/cuenta-dibujando-tu-futuro",
+      "color": "#1B5E8A",
+      "descripcion": "Cuenta de ahorro programado con tasa base 2% + bono del 4% si cumples tu meta. Total: hasta 6% si no retiras más del 20%.",
+      "ventajas": [
+        "Hasta 6% si cumples la meta",
+        "Disciplina de ahorro con incentivo",
+        "Sin costos"
+      ],
+      "desventajas": [
+        "Bono se pierde si retiras > 20%",
+        "Tasa base baja sin bono"
+      ],
+      "pasos": [
+        "Ve a bgr.com.ec/cuenta-dibujando-tu-futuro",
+        "Define tu meta de ahorro (viaje, educación, etc.)",
+        "Programa depósitos automáticos periódicos",
+        "Evita retirar más del 20% para conservar el bono del 4%",
+        "Al cumplir el plazo recibes tasa base 2% + bono 4% = 6% total"
+      ]
+    },
+    {
+      "id": "produbanco_flexiahorro",
+      "banco": "Produbanco",
+      "producto": "FlexiAhorro",
+      "tipo": "ahorro_especial",
+      "tasa": 3.5,
+      "liquidez": "inmediata o blindada",
+      "montoMin": 1,
+      "capitalizacion": "diaria",
+      "restriccion": "Tasa mayor con 'blindado' (compromiso de no retirar por período elegido)",
+      "web": "produbanco.com.ec/banca-personas/flexiahorro",
+      "color": "#00843D",
+      "descripcion": "Cuenta de ahorro flexible con interés diario. Versión 'blindada' ofrece mayor tasa a cambio de no retirar por el período elegido.",
+      "ventajas": [
+        "Desde $1",
+        "Interés diario",
+        "Potenciadores: redondeo, reto 52 semanas",
+        "Totalmente digital"
+      ],
+      "desventajas": [
+        "Tasa base moderada",
+        "Para tasa máxima debes 'blindar' (no retirar)"
+      ],
+      "pasos": [
+        "Descarga la app Produbanco o ve a produbanco.com.ec",
+        "Abre tu FlexiAhorro desde $1",
+        "Activa 'Ahorro Blindado' para obtener mayor tasa",
+        "Elige el período de bloqueo (mayor período = mayor tasa)",
+        "Activa potenciadores: redondeo de compras, ahorro automático",
+        "Los intereses se acumulan diariamente y se acreditan al final"
+      ]
+    },
+    {
+      "id": "produbanco_ahorro_normal",
+      "banco": "Produbanco",
+      "producto": "Cuenta de Ahorros tradicional",
+      "tipo": "ahorro_tradicional",
+      "tasa": 0.3,
+      "liquidez": "inmediata",
+      "montoMin": 10,
+      "capitalizacion": "mensual",
+      "restriccion": null,
+      "web": "produbanco.com.ec/banca-personas/cuentas/cuenta-ahorros",
+      "color": "#00843D",
+      "descripcion": "Cuenta de ahorros tradicional con tasa 0.25-0.35%. Útil para el día a día pero no para hacer crecer el dinero.",
+      "ventajas": [
+        "Acceso a todos los servicios Produbanco",
+        "Depósito inicial desde $10"
+      ],
+      "desventajas": [
+        "Tasa muy baja (0.25-0.35%)",
+        "No recomendada para ahorrar — usar FlexiAhorro"
+      ],
+      "pasos": [
+        "Ve a produbanco.com.ec o descarga la app",
+        "Abre cuenta con tu cédula y $10 de depósito inicial",
+        "Úsala principalmente para pagos y transferencias",
+        "Para ahorrar de verdad: usa FlexiAhorro (tasa mucho mayor)"
+      ]
+    },
+    {
+      "id": "guayaquil_ahorro",
+      "banco": "Banco Guayaquil",
+      "producto": "Cuenta de Ahorros",
+      "tipo": "ahorro_tradicional",
+      "tasa": 2.8,
+      "liquidez": "inmediata",
+      "montoMin": 0,
+      "capitalizacion": "mensual",
+      "restriccion": null,
+      "web": "bancoguayaquil.com",
+      "color": "#0055A5",
+      "descripcion": "Cuenta de ahorros con tasa TEA 2.80%. Una de las mejores tasas de ahorro tradicional en bancos grandes.",
+      "ventajas": [
+        "Tasa competitiva para ahorro tradicional",
+        "Sin monto mínimo",
+        "App completa"
+      ],
+      "desventajas": [
+        "Menor que cuentas especiales de otros bancos"
+      ],
+      "pasos": [
+        "Descarga la app Banco Guayaquil",
+        "Abre cuenta 100% digital con tu cédula",
+        "Sin monto mínimo requerido",
+        "Interés acreditado mensualmente sobre saldo promedio"
+      ]
+    },
+    {
+      "id": "pacifico_ahorro",
+      "banco": "Banco del Pacífico",
+      "producto": "Cuenta de Ahorros",
+      "tipo": "ahorro_tradicional",
+      "tasa": 3.0,
+      "liquidez": "inmediata",
+      "montoMin": 0,
+      "capitalizacion": "mensual",
+      "restriccion": null,
+      "web": "bancodelpacífico.com",
+      "color": "#006BB6",
+      "descripcion": "Banco estatal con tasa de ahorro 3.00%. Respaldo del Estado ecuatoriano.",
+      "ventajas": [
+        "Respaldo estatal",
+        "3% sin condiciones especiales",
+        "Red de agencias amplia"
+      ],
+      "desventajas": [
+        "Proceso digital menos ágil que bancos privados"
+      ],
+      "pasos": [
+        "Ve a bancodelpacífico.com o visita una agencia",
+        "Abre cuenta con cédula",
+        "Sin monto mínimo",
+        "Interés acreditado mensualmente"
+      ]
+    }
+  ]
 }
