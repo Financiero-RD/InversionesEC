@@ -3,39 +3,61 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>TasasEC — Inversiones Ecuador actualizadas</title>
+<title>TasasEC — Inversiones y Ahorros Ecuador</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0A0F0A;--bg2:#111811;--bg3:#182018;--border:#1E2E1E;--border2:#2A3E2A;--green:#3DFF7A;--green2:#22C55E;--gdim:#1A3D28;--amber:#F5A623;--red:#FF5050;--blue:#5BB8FF;--purple:#A855F7;--text:#E8F0E8;--text2:#8FA88F;--text3:#4A5F4A;--mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'Instrument Sans',sans-serif}
+:root{--bg:#0A0F0A;--bg2:#111811;--bg3:#182018;--border:#1E2E1E;--border2:#2A3E2A;--green:#3DFF7A;--green2:#22C55E;--gdim:#1A3D28;--amber:#F5A623;--red:#FF5050;--blue:#5BB8FF;--purple:#A855F7;--teal:#2DD4BF;--text:#E8F0E8;--text2:#8FA88F;--text3:#4A5F4A;--mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'Instrument Sans',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:999}
-header{border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;background:rgba(10,15,10,.95);backdrop-filter:blur(12px)}
-.logo-row{display:flex;align-items:center;gap:12px;padding:16px 0}
+
+/* HEADER */
+header{border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;background:rgba(10,15,10,.96);backdrop-filter:blur(12px)}
+.logo-row{display:flex;align-items:center;gap:12px;padding:14px 0}
 .dot{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.logo-txt{font-family:var(--serif);font-size:21px}.logo-txt span{color:var(--green)}
+.logo-txt{font-family:var(--serif);font-size:20px}.logo-txt span{color:var(--green)}
 .logo-sub{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.07em;margin-top:1px}
-.hdr-meta{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:10px}
-.hdr-stat{text-align:right}.hdr-stat b{color:var(--green2);display:block;font-size:12px}
+.hdr-stats{display:flex;align-items:center;gap:14px}
+.hs{text-align:right;font-family:var(--mono);font-size:10px;color:var(--text3)}
+.hs b{color:var(--green2);display:block;font-size:12px}
+
+/* STATUS BAR */
 #sbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 24px;font-family:var(--mono);font-size:10px;color:var(--text3);display:flex;align-items:center;gap:10px;overflow:hidden}
 .sdot{width:6px;height:6px;border-radius:50%;background:var(--text3);flex-shrink:0}
 .sdot.ok{background:var(--green);box-shadow:0 0 5px var(--green);animation:pulse 2s infinite}
-.sdot.loading{background:var(--amber);box-shadow:0 0 5px var(--amber);animation:pulse .5s infinite}
-.ticker{display:flex;gap:20px;margin-left:auto;flex-shrink:0}
+.sdot.loading{background:var(--amber);animation:pulse .5s infinite}
+.ticker{display:flex;gap:18px;margin-left:auto;flex-shrink:0}
 .tk{display:flex;gap:5px}.tk-l{color:var(--text3)}.tk-v{color:var(--green);font-weight:500}
-main{max-width:1000px;margin:0 auto;padding:28px 20px}
-.hero{margin-bottom:32px}
-.hero h1{font-family:var(--serif);font-size:clamp(26px,4.5vw,44px);line-height:1.1;margin-bottom:6px}
+
+/* MAIN */
+main{max-width:1040px;margin:0 auto;padding:28px 20px}
+
+/* HERO */
+.hero{margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-size:clamp(24px,4vw,42px);line-height:1.1;margin-bottom:6px}
 .hero h1 em{color:var(--green);font-style:italic}
-.hero p{font-size:13px;color:var(--text2);max-width:500px;line-height:1.6}
-.ctrl{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;align-items:center}
-.tb{font-family:var(--mono);font-size:10px;padding:6px 14px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;transition:all .18s}
+.hero p{font-size:13px;color:var(--text2);max-width:520px;line-height:1.6}
+
+/* PRODUCTO TABS */
+.prod-tabs{display:flex;gap:0;margin-bottom:24px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:4px;width:fit-content}
+.pt{font-family:var(--mono);font-size:11px;padding:8px 18px;border-radius:4px;border:none;background:transparent;color:var(--text3);cursor:pointer;letter-spacing:.04em;transition:all .18s;display:flex;align-items:center;gap:6px}
+.pt.on{background:var(--gdim);color:var(--green);border:1px solid var(--green2)}
+.pt-badge{background:var(--border2);color:var(--text3);padding:1px 6px;border-radius:99px;font-size:9px}
+.pt.on .pt-badge{background:var(--gdim);color:var(--green)}
+
+/* VIEW TABS */
+.ctrl{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.tb{font-family:var(--mono);font-size:10px;padding:5px 13px;border-radius:3px;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;letter-spacing:.05em;text-transform:uppercase;transition:all .18s}
 .tb:hover,.tb.on{border-color:var(--green);color:var(--green);background:var(--gdim)}
-.src-badge{margin-left:auto;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:5px 12px;border-radius:3px}
+.src-badge{margin-left:auto;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:4px 11px;border-radius:3px}
 .dot-sm{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;flex-shrink:0}
+
+/* SECTION LABEL */
 .sl{font-family:var(--mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .sl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* TABLA PÓLIZAS */
 .tw{overflow-x:auto;margin-bottom:28px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead tr{border-bottom:1px solid var(--border2)}
@@ -53,13 +75,52 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .cA{background:#2A1F0D;color:var(--amber);border:1px solid #4A3A1A}
 .rc{position:relative;padding-bottom:14px!important}
 .rv{font-size:13px;font-weight:500;color:var(--text2)}
-.rb{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);height:2px;border-radius:99px;opacity:.4;transition:width .6s ease}
+.rb{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);height:2px;border-radius:99px;opacity:.4}
 .best{color:var(--green)!important;font-weight:700!important}
 .ntag{display:inline-block;padding:1px 5px;border-radius:2px;font-family:var(--mono);font-size:8px;background:var(--gdim);color:var(--green);border:1px solid #2A5A3A;margin-left:5px;vertical-align:middle}
+
+/* CARDS AHORRO */
+.ahorro-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:28px}
+.ahorro-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.ahorro-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.ahorro-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.ac-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.ac-banco{font-size:11px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.ac-producto{font-size:14px;font-weight:700;color:var(--text);line-height:1.2}
+.ac-tasa{text-align:right}
+.ac-tasa-val{font-family:var(--serif);font-size:28px;line-height:1;color:var(--green)}
+.ac-tasa-label{font-family:var(--mono);font-size:9px;color:var(--text3);text-align:right}
+.ac-bar{height:4px;background:var(--bg3);border-radius:99px;overflow:hidden;margin:10px 0}
+.ac-bar-fill{height:100%;border-radius:99px;background:var(--green);transition:width .6s ease}
+.ac-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ac-tag{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:2px;border:1px solid var(--border2);color:var(--text3)}
+.ac-tag.green{background:var(--gdim);color:var(--green2);border-color:#1A4A2A}
+.ac-tag.amber{background:#2A1F0D;color:var(--amber);border-color:#4A3A1A}
+.ac-tag.red{background:#2A0D0D;color:var(--red);border-color:#4A1A1A}
+.ac-restriccion{font-size:10px;color:var(--amber);margin-top:8px;line-height:1.4;display:flex;gap:5px}
+
+/* COMPARADOR */
+.comp-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:18px;margin-bottom:28px}
+.comp-title{font-family:var(--serif);font-size:18px;margin-bottom:4px}
+.comp-sub{font-size:11px;color:var(--text2);margin-bottom:16px}
+.comp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.comp-row:last-child{border-bottom:none}
+.comp-num{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:20px}
+.comp-info{flex:1}
+.comp-name{font-size:13px;font-weight:600}
+.comp-tipo{font-family:var(--mono);font-size:9px;padding:1px 6px;border-radius:2px;text-transform:uppercase}
+.chip-poliza{background:#0D1F2A;color:var(--blue);border:1px solid #1A3A4A}
+.chip-ahorro{background:var(--gdim);color:var(--green2);border:1px solid #1A4A2A}
+.chip-especial{background:#2A1A2A;color:var(--purple);border:1px solid #4A2A4A}
+.comp-bar-wrap{flex:2;height:5px;background:var(--bg3);border-radius:99px;overflow:hidden}
+.comp-bar-fill{height:100%;border-radius:99px;transition:width .7s ease}
+.comp-tasa{font-family:var(--mono);font-size:13px;font-weight:600;min-width:50px;text-align:right}
+.comp-liq{font-family:var(--mono);font-size:9px;min-width:70px;text-align:right}
+
 /* DRAWER */
-#drw{position:fixed;right:0;top:0;bottom:0;width:min(400px,100vw);background:var(--bg2);border-left:1px solid var(--border2);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:200;overflow-y:auto;padding:24px}
+#drw{position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:var(--bg2);border-left:1px solid var(--border2);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:200;overflow-y:auto;padding:24px}
 #drw.open{transform:translateX(0)}
-#drw-bk{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199}
+#drw-bk{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:199}
 .dclose{position:absolute;top:16px;right:16px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);width:28px;height:28px;border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
 .dname{font-family:var(--serif);font-size:22px;color:var(--text);margin:6px 0 4px;line-height:1.2}
 .rtbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px}
@@ -76,15 +137,18 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .sn{min-width:18px;height:18px;border-radius:2px;background:var(--gdim);border:1px solid var(--green);color:var(--green);font-family:var(--mono);font-size:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
 .use-btn{width:100%;background:var(--gdim);border:1px solid var(--green);color:var(--green);padding:9px;border-radius:3px;cursor:pointer;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.07em;margin-top:14px;transition:background .15s}
 .use-btn:hover{background:#224A32}
+
 /* RANKING */
 .rkrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
 .rkrow:hover{background:var(--bg2)}
 .rkpos{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:22px}
-.rkname{font-size:13px;font-weight:600;flex:1}
+.rkname{font-size:13px;font-weight:600;flex:1;line-height:1.2}
 .rktype{font-family:var(--mono);font-size:8px;padding:1px 5px;border-radius:2px;text-transform:uppercase}
 .rkbar{flex:2;position:relative;height:5px;background:var(--bg3);border-radius:99px;overflow:hidden}
 .rkfill{position:absolute;left:0;top:0;bottom:0;border-radius:99px;transition:width .7s ease}
-.rktasa{font-family:var(--mono);font-size:13px;font-weight:500;min-width:52px;text-align:right}
+.rktasa{font-family:var(--mono);font-size:13px;font-weight:600;min-width:52px;text-align:right}
+.rkliq{font-family:var(--mono);font-size:9px;color:var(--text3);min-width:70px;text-align:right}
+
 /* CALC */
 .cbox{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:18px;margin-bottom:28px}
 .cgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
@@ -95,21 +159,25 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .cr{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:10px;text-align:center}
 .crl{font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
 .crv{font-family:var(--mono);font-size:15px;font-weight:500}
+
+/* NOTA */
+.nota{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:12px 14px;font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:24px}
+.nota b{color:var(--text)}
+
 /* FREQ */
 .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:9px;margin-bottom:28px}
 .fc{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:14px}
-.fi{font-size:18px;margin-bottom:7px}
+.fbadge{display:inline-block;padding:2px 7px;border-radius:2px;font-family:var(--mono);font-size:9px;font-weight:600;margin-bottom:7px}
 .ft{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
 .fb{font-size:11px;color:var(--text2);line-height:1.5}
-.fbadge{display:inline-block;padding:2px 7px;border-radius:2px;font-family:var(--mono);font-size:9px;font-weight:600;margin-bottom:7px}
-.nota{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:3px;padding:12px 14px;font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:28px}
-.nota b{color:var(--text)}
-footer{border-top:1px solid var(--border);padding:16px 24px;font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;line-height:1.8}
+
+footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;line-height:1.8}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:580px){.cgrid,.cres{grid-template-columns:1fr}.ticker{display:none}#drw{width:100vw}.hdr-meta{display:none}}
+@media(max-width:600px){.cgrid,.cres{grid-template-columns:1fr}.ticker{display:none}#drw{width:100vw}.hdr-stats{display:none}.prod-tabs{flex-wrap:wrap}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="logo-row">
     <div class="dot"></div>
@@ -118,10 +186,11 @@ footer{border-top:1px solid var(--border);padding:16px 24px;font-family:var(--mo
       <div class="logo-sub">ECUADOR · ROBOT GITHUB ACTIONS · SIN COSTO</div>
     </div>
   </div>
-  <div class="hdr-meta">
-    <div class="hdr-stat"><b id="hdr-fecha">—</b><span id="hdr-inst">cargando...</span></div>
-    <div class="hdr-stat"><b id="hdr-avgb">—</b><span>avg bancos</span></div>
-    <div class="hdr-stat"><b id="hdr-avgc">—</b><span>avg coops</span></div>
+  <div class="hdr-stats">
+    <div class="hs"><b id="hdr-fecha">—</b><span id="hdr-inst">cargando...</span></div>
+    <div class="hs"><b id="hdr-avgb">—</b><span>avg pólizas bancos</span></div>
+    <div class="hs"><b id="hdr-avgc">—</b><span>avg pólizas coops</span></div>
+    <div class="hs"><b id="hdr-mejor-ahorro">—</b><span>mejor cta. ahorro</span></div>
   </div>
 </header>
 
@@ -129,58 +198,95 @@ footer{border-top:1px solid var(--border);padding:16px 24px;font-family:var(--mo
   <div class="sdot loading" id="sdot"></div>
   <span id="stxt">Cargando datos desde data/tasas.json...</span>
   <div class="ticker" id="tkr" style="display:none">
-    <div class="tk"><span class="tk-l">BANCOS AVG</span><span class="tk-v" id="tk1">—</span></div>
-    <div class="tk"><span class="tk-l">COOPS AVG</span><span class="tk-v" id="tk2">—</span></div>
-    <div class="tk"><span class="tk-l">MEJOR TASA</span><span class="tk-v" id="tk3">—</span></div>
+    <div class="tk"><span class="tk-l">BANCOS</span><span class="tk-v" id="tk1">—</span></div>
+    <div class="tk"><span class="tk-l">COOPS</span><span class="tk-v" id="tk2">—</span></div>
+    <div class="tk"><span class="tk-l">MEJOR PÓLIZA</span><span class="tk-v" id="tk3">—</span></div>
+    <div class="tk"><span class="tk-l">MEJOR AHORRO</span><span class="tk-v" id="tk4">—</span></div>
     <div class="tk"><span class="tk-l">PRÓX. UPDATE</span><span class="tk-v">Día 2 · mes siguiente</span></div>
   </div>
 </div>
 
 <main>
   <div class="hero">
-    <h1>Inversiones <em>sin costo</em><br>actualizadas mes a mes</h1>
-    <p>Robot GitHub Actions corre el día 2 de cada mes, revisa tarifarios oficiales y actualiza <code style="color:var(--green);font-family:var(--mono);font-size:12px">data/tasas.json</code> automáticamente. Sin tokens, sin APIs de pago.</p>
+    <h1>Pólizas y ahorros <em>actualizados</em><br>mes a mes en Ecuador</h1>
+    <p>Compara depósitos a plazo fijo, pólizas de acumulación <strong>y cuentas de ahorro especiales</strong> de los principales bancos y cooperativas. Robot GitHub Actions actualiza automáticamente cada mes.</p>
   </div>
 
-  <div class="nota">
-    <b>🤖 ¿Cómo funciona el robot?</b> GitHub Actions ejecuta <b>scraper.py</b> el día 2 de cada mes. El script lee tasas base verificadas y hace un commit automático al repositorio. Esta página lee ese JSON directamente — completamente gratis, para siempre.
+  <!-- SELECTOR DE PRODUCTO -->
+  <div class="prod-tabs" id="prod-tabs">
+    <button class="pt on" onclick="setProd('polizas',this)">
+      🔒 Pólizas / Plazo Fijo <span class="pt-badge" id="badge-polizas">13</span>
+    </button>
+    <button class="pt" onclick="setProd('ahorro',this)">
+      💰 Cuentas de Ahorro <span class="pt-badge" id="badge-ahorro">—</span>
+    </button>
+    <button class="pt" onclick="setProd('comparar',this)">
+      ⚡ Comparar todo
+    </button>
   </div>
 
+  <div class="nota" id="nota-prod">
+    <b>🔒 Pólizas / Depósito a Plazo Fijo:</b> Bloqueas tu dinero por 31 a 450+ días y recibes entre <b>2.5% y 9% anual</b>. Ideal para dinero que no necesitas tocar. Desde marzo 2026 el SRI exime de impuesto si inviertes a <b>181+ días</b>.
+  </div>
+
+  <!-- TABS DE VISTA -->
   <div class="ctrl">
-    <button class="tb on" onclick="setT('tabla',this)">📊 Tabla</button>
-    <button class="tb" onclick="setT('ranking',this)">🏆 Ranking</button>
-    <button class="tb" onclick="setT('calc',this)">🧮 Calculadora</button>
-    <button class="tb" onclick="setT('freq',this)">🔄 Frecuencias</button>
+    <button class="tb on" id="btn-tabla" onclick="setVista('tabla',this)">📊 Tabla</button>
+    <button class="tb" id="btn-ranking" onclick="setVista('ranking',this)">🏆 Ranking</button>
+    <button class="tb" id="btn-calc" onclick="setVista('calc',this)">🧮 Calculadora</button>
+    <button class="tb" id="btn-freq" onclick="setVista('freq',this)">🔄 Frecuencias</button>
     <div class="src-badge"><div class="dot-sm"></div><span id="src-lbl">data/tasas.json</span></div>
   </div>
 
-  <!-- TABLA -->
-  <div id="tab-tabla">
-    <div class="sl">Bancos privados · 7 instituciones</div>
-    <div class="tw"><table><thead><tr>
-      <th>Institución</th><th>Cal.</th>
-      <th>31–60d</th><th>61–90d</th><th>91–180d</th><th>181–360d</th><th>361+d</th><th>Min $</th>
-    </tr></thead><tbody id="tb-bancos"><tr><td colspan="8" style="padding:32px;text-align:center;font-family:var(--mono);color:var(--text3);font-size:11px">Cargando...</td></tr></tbody></table></div>
+  <!-- ═══════════ VISTA: TABLA ═══════════ -->
+  <div id="vista-tabla">
 
-    <div class="sl">Cooperativas · Segmento 1</div>
-    <div class="tw"><table><thead><tr>
-      <th>Institución</th><th>Cal.</th>
-      <th>31–60d</th><th>61–90d</th><th>91–180d</th><th>181–360d</th><th>361+d</th><th>Min $</th>
-    </tr></thead><tbody id="tb-coops"><tr><td colspan="8" style="padding:32px;text-align:center;font-family:var(--mono);color:var(--text3);font-size:11px">Cargando...</td></tr></tbody></table></div>
+    <!-- PÓLIZAS -->
+    <div id="sec-polizas">
+      <div class="sl">Bancos privados · Depósito a plazo fijo</div>
+      <div class="tw"><table><thead><tr>
+        <th>Institución</th><th>Cal.</th>
+        <th>31–60d</th><th>61–90d</th><th>91–180d</th><th>181–360d</th><th>361+d</th><th>Min $</th>
+      </tr></thead><tbody id="tb-bancos"><tr><td colspan="8" style="padding:32px;text-align:center;font-family:var(--mono);color:var(--text3);font-size:11px">Cargando...</td></tr></tbody></table></div>
+
+      <div class="sl">Cooperativas Seg. 1 · Certificado de depósito</div>
+      <div class="tw"><table><thead><tr>
+        <th>Institución</th><th>Cal.</th>
+        <th>31–60d</th><th>61–90d</th><th>91–180d</th><th>181–360d</th><th>361+d</th><th>Min $</th>
+      </tr></thead><tbody id="tb-coops"><tr><td colspan="8" style="padding:32px;text-align:center;font-family:var(--mono);color:var(--text3);font-size:11px">Cargando...</td></tr></tbody></table></div>
+    </div>
+
+    <!-- CUENTAS DE AHORRO -->
+    <div id="sec-ahorro" style="display:none">
+      <div class="sl">Cuentas de ahorro con tasas destacadas · liquidez inmediata</div>
+      <div class="ahorro-grid" id="ahorro-grid">
+        <div style="padding:32px;text-align:center;font-family:var(--mono);color:var(--text3);font-size:11px;grid-column:1/-1">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- COMPARAR TODO -->
+    <div id="sec-comparar" style="display:none">
+      <div class="comp-wrap">
+        <div class="comp-title">Comparación completa: Pólizas vs Ahorros</div>
+        <div class="comp-sub">Ordenado de mayor a menor tasa — incluye liquidez disponible</div>
+        <div id="comp-list"></div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- RANKING -->
-  <div id="tab-ranking" style="display:none">
-    <div class="sl">Ordenadas por mejor tasa digital (361+ días)</div>
+  <!-- ═══════════ VISTA: RANKING ═══════════ -->
+  <div id="vista-ranking" style="display:none">
+    <div class="sl">Ranking por tasa · mayor a menor</div>
     <div id="rkl"></div>
   </div>
 
-  <!-- CALCULADORA -->
-  <div id="tab-calc" style="display:none">
+  <!-- ═══════════ VISTA: CALCULADORA ═══════════ -->
+  <div id="vista-calc" style="display:none">
     <div class="sl">Simulador de rendimiento</div>
     <div class="cbox">
       <div style="font-family:var(--serif);font-size:20px;margin-bottom:4px">¿Cuánto ganarías?</div>
-      <div style="font-size:11px;color:var(--text2);margin-bottom:2px">Interés compuesto capitalizado mensualmente</div>
+      <div style="font-size:11px;color:var(--text2)">Interés compuesto capitalizado mensualmente</div>
       <div class="cgrid">
         <div class="cf"><label>Capital ($)</label><input id="cc" type="number" value="5000" oninput="calcular()"></div>
         <div class="cf"><label>Tasa anual (%)</label><input id="ct" type="number" value="7.5" step="0.01" oninput="calcular()"></div>
@@ -191,215 +297,365 @@ footer{border-top:1px solid var(--border);padding:16px 24px;font-family:var(--mo
         <div class="cr"><div class="crl">Interés ganado</div><div class="crv" id="cr2" style="color:var(--green)">—</div></div>
         <div class="cr"><div class="crl">Total final</div><div class="crv" id="cr3" style="color:var(--amber)">—</div></div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--text3)">💡 Haz clic en cualquier institución y presiona "Aplicar tasa" para calcular automáticamente.</div>
+      <div style="margin-top:10px;font-size:10px;color:var(--text3)">💡 Haz clic en cualquier institución → "Aplicar tasa" para calcular con su tasa real.</div>
     </div>
   </div>
 
-  <!-- FRECUENCIAS -->
-  <div id="tab-freq" style="display:none">
+  <!-- ═══════════ VISTA: FRECUENCIAS ═══════════ -->
+  <div id="vista-freq" style="display:none">
     <div class="sl">¿Cada cuánto cambian las tasas?</div>
     <div class="fgrid">
       <div class="fc" style="border-top:2px solid var(--green)">
-        <div class="fi">📅</div>
+        <div style="font-size:18px;margin-bottom:7px">📅</div>
         <div class="fbadge" style="background:var(--gdim);color:var(--green)">Semanal · Viernes</div>
         <div class="ft" style="color:var(--green)">BCE — Tasa referencial</div>
         <div class="fb">El Banco Central publica el promedio ponderado del sistema cada viernes en bce.fin.ec.</div>
       </div>
       <div class="fc" style="border-top:2px solid var(--blue)">
-        <div class="fi">🗓️</div>
+        <div style="font-size:18px;margin-bottom:7px">🗓️</div>
         <div class="fbadge" style="background:#0D1F2A;color:var(--blue)">Mensual · día 1°</div>
         <div class="ft" style="color:var(--blue)">Tarifarios oficiales</div>
-        <div class="fb">Cada institución actualiza su tarifario el 1° de mes. Este robot lo captura el día 2.</div>
+        <div class="fb">Cada institución actualiza tarifarios el 1° de mes. Este robot los captura el día 2.</div>
       </div>
       <div class="fc" style="border-top:2px solid var(--amber)">
-        <div class="fi">🌎</div>
-        <div class="fbadge" style="background:#2A1F0D;color:var(--amber)">Cada 6–8 sem.</div>
+        <div style="font-size:18px;margin-bottom:7px">🌎</div>
+        <div class="fbadge" style="background:#2A1F0D;color:var(--amber)">Cada 6–8 semanas</div>
         <div class="ft" style="color:var(--amber)">FED de EE.UU.</div>
         <div class="fb">Ecuador usa el dólar. Cuando la FED mueve tasas, los bancos ecuatorianos los siguen.</div>
       </div>
       <div class="fc" style="border-top:2px solid var(--red)">
-        <div class="fi">⚠️</div>
+        <div style="font-size:18px;margin-bottom:7px">⚠️</div>
         <div class="fbadge" style="background:#2A0D0D;color:var(--red)">Desde marzo 2026</div>
-        <div class="ft" style="color:var(--red)">Cambio SRI</div>
-        <div class="fb">Mayor retención en depósitos menores a 6 meses. Conviene invertir a 181+ días.</div>
+        <div class="ft" style="color:var(--red)">Retención SRI</div>
+        <div class="fb">3% sobre intereses en pólizas &lt;180 días. Exento si inviertes a 181+ días.</div>
       </div>
-      <div class="fc" style="border-top:2px solid var(--purple)">
-        <div class="fi">💡</div>
-        <div class="fbadge" style="background:#1A0D2A;color:var(--purple)">Estrategia 2026</div>
-        <div class="ft" style="color:var(--purple)">Tasas en baja</div>
-        <div class="fb">Tasas bajando desde 2024. Cierra una póliza larga YA para asegurar la tasa actual.</div>
+      <div class="fc" style="border-top:2px solid var(--teal)">
+        <div style="font-size:18px;margin-bottom:7px">💰</div>
+        <div class="fbadge" style="background:#0D2A28;color:var(--teal)">Cuentas de ahorro</div>
+        <div class="ft" style="color:var(--teal)">Tasas fijas por producto</div>
+        <div class="fb">Las tasas de cuentas especiales (Flexible, Rentable, Salud) son fijas por contrato. Cambian con menos frecuencia que las pólizas.</div>
       </div>
       <div class="fc" style="border-top:2px solid var(--text3)">
-        <div class="fi">🤖</div>
+        <div style="font-size:18px;margin-bottom:7px">🤖</div>
         <div class="fbadge" style="background:var(--bg3);color:var(--text2)">Este sitio</div>
         <div class="ft">GitHub Actions</div>
-        <div class="fb">Robot corre el día 2 de cada mes. Actualiza data/tasas.json en el repo automáticamente.</div>
+        <div class="fb">Robot corre el día 2 de cada mes. Actualiza data/tasas.json automáticamente. Sin costo.</div>
       </div>
     </div>
   </div>
+
 </main>
 
 <footer>
   Fuentes: BCE · Superbancos · SEPS · Tarifarios oficiales · Robot GitHub Actions &nbsp;|&nbsp;
-  Seguro COSEDE hasta <b>$32,000</b> por depositante &nbsp;|&nbsp;
+  Seguro COSEDE <b>$32,000</b> por depositante &nbsp;|&nbsp;
   Tasas referenciales — verifica en el sitio oficial antes de invertir
 </footer>
 
-<!-- DRAWER DETALLE -->
 <div id="drw"><div id="drw-c"></div></div>
 <div id="drw-bk" onclick="cdrw()"></div>
 
 <script>
 let DATA = null;
+let currentProd = 'polizas';
+let currentVista = 'tabla';
 
-function setT(t, b) {
-  ['tabla','ranking','calc','freq'].forEach(x =>
-    document.getElementById('tab-'+x).style.display = x===t ? 'block' : 'none');
-  document.querySelectorAll('.tb').forEach(x => x.classList.remove('on'));
-  if (b) b.classList.add('on');
+// ── Utilidades ─────────────────────────────────────────────
+const fmt = n => '$' + n.toLocaleString('es-EC',{minimumFractionDigits:2,maximumFractionDigits:2});
+const calCls = c => c.startsWith('AAA')?'cAAA':c.startsWith('AA')?'cAA':'cA';
+
+// ── Selector de producto ────────────────────────────────────
+const NOTAS = {
+  polizas: '<b>🔒 Pólizas / Depósito a Plazo Fijo:</b> Bloqueas tu dinero 31–450+ días y ganas entre <b>2.5% y 9% anual</b>. Desde marzo 2026 el SRI exime de impuesto si inviertes a <b>181+ días</b>.',
+  ahorro:  '<b>💰 Cuentas de Ahorro Especiales:</b> Liquidez <b>inmediata</b> con tasas de hasta <b>6% anual</b> (BGR Salud). Retiras cuando quieras sin penalidad. Tasa menor que una póliza pero sin bloquear el dinero.',
+  comparar:'<b>⚡ Comparación completa:</b> Pólizas + Cuentas de ahorro ordenadas de mayor a menor tasa. La columna Liquidez indica si puedes retirar libremente o si el dinero está bloqueado.'
+};
+
+function setProd(p, btn) {
+  currentProd = p;
+  document.querySelectorAll('.pt').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('nota-prod').innerHTML = NOTAS[p];
+  document.getElementById('sec-polizas').style.display  = p==='polizas'  ? 'block':'none';
+  document.getElementById('sec-ahorro').style.display   = p==='ahorro'   ? 'block':'none';
+  document.getElementById('sec-comparar').style.display = p==='comparar' ? 'block':'none';
+  if (p==='comparar' && DATA) renderComparar();
 }
 
+// ── Vistas ──────────────────────────────────────────────────
+function setVista(v, btn) {
+  currentVista = v;
+  ['tabla','ranking','calc','freq'].forEach(x =>
+    document.getElementById('vista-'+x).style.display = x===v ? 'block':'none');
+  document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+}
+
+// ── Calculadora ─────────────────────────────────────────────
 function calcular() {
-  const m = parseFloat(document.getElementById('cc').value)||0;
-  const t = parseFloat(document.getElementById('ct').value)||0;
-  const p = parseInt(document.getElementById('cp').value)||0;
-  const i = m * Math.pow(1 + t/100/12, p) - m;
-  const fmt = n => '$' + n.toLocaleString('es-EC',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const m=parseFloat(document.getElementById('cc').value)||0;
+  const t=parseFloat(document.getElementById('ct').value)||0;
+  const p=parseInt(document.getElementById('cp').value)||0;
+  const i = m*Math.pow(1+t/100/12,p)-m;
   document.getElementById('cr1').textContent = fmt(m);
   document.getElementById('cr2').textContent = fmt(i);
   document.getElementById('cr3').textContent = fmt(m+i);
 }
 calcular();
 
+// ── Drawer ───────────────────────────────────────────────────
 function cdrw() {
   document.getElementById('drw').classList.remove('open');
-  document.getElementById('drw-bk').style.display = 'none';
+  document.getElementById('drw-bk').style.display='none';
 }
-
 function useTasa(t) {
   document.getElementById('ct').value = t.toFixed(2);
-  setT('calc', null);
-  document.querySelectorAll('.tb').forEach(x => x.classList.remove('on'));
-  calcular();
-  cdrw();
+  setVista('calc',document.getElementById('btn-calc'));
+  calcular(); cdrw();
 }
 
-function odrw(inst) {
-  const cc = inst.calificacion.startsWith('AAA') ? 'cAAA' : inst.calificacion.startsWith('AA') ? 'cAA' : 'cA';
+function openDrawerPoliza(inst) {
   const rows = inst.tasas.map(t =>
     `<tr><td style="color:var(--text2)">${t.plazo}</td><td>${t.digital.toFixed(2)}%</td><td style="color:var(--text3)">${t.agencia.toFixed(2)}%</td></tr>`
   ).join('');
   const pasos = (inst.pasos||[]).map((p,i) =>
-    `<li><div class="sn">${i+1}</div><span>${p}</span></li>`
-  ).join('');
+    `<li><div class="sn">${i+1}</div><span>${p}</span></li>`).join('');
   const mejorT = inst.tasas[inst.tasas.length-1].digital;
   document.getElementById('drw-c').innerHTML = `
     <button class="dclose" onclick="cdrw()">✕</button>
     <div style="margin-top:6px">
-      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">${inst.tipo==='banco'?'BANCO PRIVADO':'COOPERATIVA · SEG. 1'}</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">${inst.tipo==='banco'?'BANCO · PÓLIZA A PLAZO FIJO':'COOPERATIVA · CERTIFICADO DEPÓSITO'}</div>
       <div class="dname">${inst.nombre}</div>
-      <span class="cal ${cc}">${inst.calificacion}</span>
+      <span class="cal ${calCls(inst.calificacion)}">${inst.calificacion}</span>
       <span style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-left:8px">Actualizado: ${inst.fechaMes||'—'}</span>
     </div>
     <div style="margin-top:18px">
       <div class="sl" style="font-size:8px">Tasas nominales anuales</div>
-      <table class="rtbl">
-        <thead><tr><th>Plazo</th><th>App / Digital</th><th>Agencia</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
+      <table class="rtbl"><thead><tr><th>Plazo</th><th>App/Digital</th><th>Agencia</th></tr></thead><tbody>${rows}</tbody></table>
     </div>
     <div class="igrid">
       <div class="icell"><div class="icl">Seguro COSEDE</div><div class="icv">$${inst.seguro.toLocaleString()}</div></div>
-      <div class="icell"><div class="icl">Monto mínimo</div><div class="icv">$${inst.montoMin}</div></div>
+      <div class="icell"><div class="icl">Mínimo</div><div class="icv">$${inst.montoMin}</div></div>
       <div class="icell"><div class="icl">Regulado por</div><div class="icv">${inst.tipo==='banco'?'Superbancos':'SEPS'}</div></div>
-      <div class="icell"><div class="icl">Sitio web</div><div class="icv" style="font-size:10px">${inst.web}</div></div>
+      <div class="icell"><div class="icl">Web</div><div class="icv" style="font-size:10px">${inst.web}</div></div>
     </div>
-    <div style="margin-top:16px">
-      <div class="sl" style="font-size:8px">Cómo invertir — paso a paso</div>
+    <div style="margin-top:14px">
+      <div class="sl" style="font-size:8px">Cómo invertir</div>
       <ul class="steps">${pasos}</ul>
     </div>
-    <button class="use-btn" onclick="useTasa(${mejorT})">
-      ↗ Aplicar tasa ${mejorT.toFixed(2)}% en la calculadora
-    </button>`;
+    <button class="use-btn" onclick="useTasa(${mejorT})">↗ Aplicar tasa ${mejorT.toFixed(2)}% en calculadora</button>`;
   document.getElementById('drw').classList.add('open');
-  document.getElementById('drw-bk').style.display = 'block';
+  document.getElementById('drw-bk').style.display='block';
 }
 
+function openDrawerAhorro(ca) {
+  const pasos = (ca.pasos||[]).map((p,i) =>
+    `<li><div class="sn">${i+1}</div><span>${p}</span></li>`).join('');
+  const vent = (ca.ventajas||[]).map(v=>`<li style="color:var(--green2)">✓ ${v}</li>`).join('');
+  const desv = (ca.desventajas||[]).map(v=>`<li style="color:var(--amber)">· ${v}</li>`).join('');
+  document.getElementById('drw-c').innerHTML = `
+    <button class="dclose" onclick="cdrw()">✕</button>
+    <div style="margin-top:6px">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">CUENTA DE AHORRO ESPECIAL</div>
+      <div class="dname">${ca.producto}</div>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text2)">${ca.banco}</span>
+    </div>
+    <div style="margin-top:16px;background:var(--gdim);border:1px solid var(--green2);border-radius:4px;padding:14px;text-align:center">
+      <div style="font-family:var(--serif);font-size:40px;color:var(--green);line-height:1">${ca.tasa.toFixed(2)}%</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:4px">TASA ANUAL · LIQUIDEZ ${(ca.liquidez||'').toUpperCase()}</div>
+    </div>
+    ${ca.restriccion ? `<div style="background:#2A1F0D;border:1px solid #4A3A1A;border-radius:4px;padding:10px;margin-top:10px;font-size:11px;color:var(--amber);line-height:1.5">⚠️ ${ca.restriccion}</div>` : ''}
+    <div class="igrid" style="margin-top:12px">
+      <div class="icell"><div class="icl">Capitalización</div><div class="icv">${ca.capitalizacion||'—'}</div></div>
+      <div class="icell"><div class="icl">Monto mínimo</div><div class="icv">$${ca.montoMin}</div></div>
+      <div class="icell"><div class="icl">Liquidez</div><div class="icv">${ca.liquidez||'—'}</div></div>
+      <div class="icell"><div class="icl">Web</div><div class="icv" style="font-size:10px">${ca.web||'—'}</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+      <div style="background:#0F2318;border:1px solid #1A4A2A;border-radius:4px;padding:10px">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;margin-bottom:6px">Ventajas</div>
+        <ul style="list-style:none;font-size:11px;display:flex;flex-direction:column;gap:4px">${vent}</ul>
+      </div>
+      <div style="background:#1C1008;border:1px solid #4A3A1A;border-radius:4px;padding:10px">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;margin-bottom:6px">Considera</div>
+        <ul style="list-style:none;font-size:11px;display:flex;flex-direction:column;gap:4px">${desv}</ul>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <div class="sl" style="font-size:8px">Cómo abrir paso a paso</div>
+      <ul class="steps">${pasos}</ul>
+    </div>
+    <button class="use-btn" onclick="useTasa(${ca.tasa})">↗ Aplicar tasa ${ca.tasa.toFixed(2)}% en calculadora</button>`;
+  document.getElementById('drw').classList.add('open');
+  document.getElementById('drw-bk').style.display='block';
+}
+
+// ── Render pólizas ───────────────────────────────────────────
 function maxTasa() {
-  if (!DATA) return 9;
-  return Math.max(...[...DATA.bancos,...DATA.cooperativas].map(i => Math.max(...i.tasas.map(t => t.digital))));
+  if(!DATA) return 9;
+  return Math.max(...[...DATA.bancos,...DATA.cooperativas].map(i=>Math.max(...i.tasas.map(t=>t.digital))));
 }
-
 function renderTb(insts, id) {
   const mx = maxTasa();
   document.getElementById(id).innerHTML = insts.map(inst => {
-    const cc = inst.calificacion.startsWith('AAA') ? 'cAAA' : inst.calificacion.startsWith('AA') ? 'cAA' : 'cA';
     const cells = inst.tasas.map(t => {
-      const best = t.digital === mx;
-      const w = (t.digital / mx * 68).toFixed(0);
+      const best = t.digital===mx;
+      const w = (t.digital/mx*68).toFixed(0);
       return `<td class="rc"><span class="rv ${best?'best':''}">${t.digital.toFixed(2)}%</span><div class="rb" style="width:${w}px;background:${best?'var(--green)':'var(--border2)'}"></div></td>`;
     }).join('');
-    const instJson = JSON.stringify(inst).replace(/"/g,'&quot;');
-    return `<tr onclick="odrw(JSON.parse(this.dataset.inst))" data-inst="${instJson}">
+    const instStr = encodeURIComponent(JSON.stringify(inst));
+    return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
       <td><div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}</div><div class="itype">${inst.tipo==='banco'?'Banco privado':'Cooperativa Seg.1'}</div></td>
-      <td><span class="cal ${cc}">${inst.calificacion}</span></td>
+      <td><span class="cal ${calCls(inst.calificacion)}">${inst.calificacion}</span></td>
       ${cells}
       <td style="font-family:var(--mono);color:var(--text2)">$${inst.montoMin}</td>
     </tr>`;
   }).join('');
 }
 
-function renderRk() {
-  if (!DATA) return;
-  const all = [...DATA.bancos,...DATA.cooperativas]
-    .sort((a,b) => Math.max(...b.tasas.map(t=>t.digital)) - Math.max(...a.tasas.map(t=>t.digital)));
-  const mx = Math.max(...all.map(i => Math.max(...i.tasas.map(t=>t.digital))));
-  const med = ['🥇','🥈','🥉'];
-  document.getElementById('rkl').innerHTML = all.map((inst,i) => {
-    const t = Math.max(...inst.tasas.map(x=>x.digital));
-    const w = (t/mx*100).toFixed(1);
-    const isBanco = inst.tipo==='banco';
-    const instJson = JSON.stringify(inst).replace(/"/g,'&quot;');
-    return `<div class="rkrow" onclick="odrw(JSON.parse(this.dataset.inst))" data-inst="${instJson}">
-      <div class="rkpos">${i<3?med[i]:(i+1)}</div>
-      <div style="flex:1">
-        <div class="rkname">${inst.nombre}</div>
-        <span class="rktype ${isBanco?'cAA':'cAAA'}">${isBanco?'Banco':'Coop'}</span>
+// ── Render cuentas de ahorro ─────────────────────────────────
+const TIPO_COLORS = {
+  ahorro_especial: ['var(--green)', '#0A2010'],
+  ahorro_programado: ['var(--purple)', '#150A20'],
+  ahorro_tradicional: ['var(--text3)', '#0D1117']
+};
+function renderAhorro() {
+  if(!DATA || !DATA.cuentasAhorro) return;
+  const maxT = Math.max(...DATA.cuentasAhorro.map(c=>c.tasa));
+  const grid = document.getElementById('ahorro-grid');
+  grid.innerHTML = DATA.cuentasAhorro.map(ca => {
+    const [col, bg] = TIPO_COLORS[ca.tipo] || ['var(--text3)','#0D1117'];
+    const w = (ca.tasa/maxT*100).toFixed(0);
+    const liqTag = ca.liquidez==='inmediata'
+      ? '<span class="ac-tag green">✓ Retiro libre</span>'
+      : '<span class="ac-tag amber">⚠ Con restricción</span>';
+    const esBest = ca.tasa === maxT;
+    const caStr = encodeURIComponent(JSON.stringify(ca));
+    return `<div class="ahorro-card" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent('${caStr}')))"
+      style="border-color:${esBest?col:'var(--border)'};background:${bg}">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:8px 8px 0 0"></div>
+      <div class="ac-header">
+        <div>
+          <div class="ac-banco">${ca.banco}</div>
+          <div class="ac-producto">${ca.producto}</div>
+        </div>
+        <div class="ac-tasa">
+          <div class="ac-tasa-val" style="color:${col}">${ca.tasa.toFixed(2)}%</div>
+          <div class="ac-tasa-label">anual</div>
+        </div>
       </div>
-      <div class="rkbar"><div class="rkfill" style="width:${w}%;background:${i<3?'var(--green)':'var(--border2)'}"></div></div>
-      <div class="rktasa" style="color:${i<3?'var(--green)':'var(--text2)'}">${t.toFixed(2)}%</div>
+      <div class="ac-bar"><div class="ac-bar-fill" style="width:${w}%;background:${col}"></div></div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:8px">${ca.descripcion||''}</div>
+      <div class="ac-tags">
+        ${liqTag}
+        <span class="ac-tag">${ca.capitalizacion||'—'}</span>
+        ${ca.montoMin>0?`<span class="ac-tag">Mín $${ca.montoMin}</span>`:'<span class="ac-tag green">Sin mínimo</span>'}
+      </div>
+      ${ca.restriccion?`<div class="ac-restriccion">⚠️ <span>${ca.restriccion}</span></div>`:''}
+    </div>`;
+  }).join('');
+  document.getElementById('badge-ahorro').textContent = DATA.cuentasAhorro.length;
+}
+
+// ── Comparar todo ────────────────────────────────────────────
+function renderComparar() {
+  if(!DATA) return;
+  const todos = [];
+  DATA.bancos.forEach(b => todos.push({
+    nombre: b.nombre, tasa: Math.max(...b.tasas.map(t=>t.digital)),
+    tipo: 'póliza', liquidez: 'bloqueada', inst: b, esPoliza: true
+  }));
+  DATA.cooperativas.forEach(c => todos.push({
+    nombre: c.nombre, tasa: Math.max(...c.tasas.map(t=>t.digital)),
+    tipo: 'póliza coop', liquidez: 'bloqueada', inst: c, esPoliza: true
+  }));
+  (DATA.cuentasAhorro||[]).forEach(ca => todos.push({
+    nombre: ca.producto+' · '+ca.banco, tasa: ca.tasa,
+    tipo: ca.tipo==='ahorro_especial'?'ahorro especial':'ahorro',
+    liquidez: ca.liquidez, inst: ca, esPoliza: false
+  }));
+  todos.sort((a,b)=>b.tasa-a.tasa);
+  const mx = todos[0].tasa;
+  const med = ['🥇','🥈','🥉'];
+  document.getElementById('comp-list').innerHTML = todos.map((item,i) => {
+    const w = (item.tasa/mx*100).toFixed(1);
+    const color = item.esPoliza ? 'var(--blue)' : 'var(--green)';
+    const chipCls = item.esPoliza ? 'chip-poliza' : item.tipo==='ahorro especial' ? 'chip-especial' : 'chip-ahorro';
+    const liqColor = item.liquidez==='inmediata'?'var(--green2)':'var(--amber)';
+    const instStr = encodeURIComponent(JSON.stringify(item.inst));
+    const fn = item.esPoliza
+      ? `openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))`
+      : `openDrawerAhorro(JSON.parse(decodeURIComponent('${instStr}')))`;
+    return `<div class="comp-row" onclick="${fn}" style="cursor:pointer">
+      <div class="rkpos">${i<3?med[i]:(i+1)}</div>
+      <div class="comp-info">
+        <div class="comp-name">${item.nombre}</div>
+        <span class="comp-tipo ${chipCls}">${item.tipo}</span>
+      </div>
+      <div class="comp-bar-wrap"><div class="comp-bar-fill" style="width:${w}%;background:${i<3?color:'var(--border2)'}"></div></div>
+      <div class="comp-tasa" style="color:${i<3?color:'var(--text2)'}">${item.tasa.toFixed(2)}%</div>
+      <div class="comp-liq" style="color:${liqColor}">${item.liquidez}</div>
     </div>`;
   }).join('');
 }
 
+// ── Render ranking ───────────────────────────────────────────
+function renderRk() {
+  if(!DATA) return;
+  const all = [...DATA.bancos,...DATA.cooperativas]
+    .sort((a,b)=>Math.max(...b.tasas.map(t=>t.digital))-Math.max(...a.tasas.map(t=>t.digital)));
+  const mx = Math.max(...all.map(i=>Math.max(...i.tasas.map(t=>t.digital))));
+  const med=['🥇','🥈','🥉'];
+  document.getElementById('rkl').innerHTML = all.map((inst,i) => {
+    const t=Math.max(...inst.tasas.map(x=>x.digital));
+    const w=(t/mx*100).toFixed(1);
+    const instStr=encodeURIComponent(JSON.stringify(inst));
+    return `<div class="rkrow" onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
+      <div class="rkpos">${i<3?med[i]:(i+1)}</div>
+      <div style="flex:1"><div class="rkname">${inst.nombre}</div>
+        <span class="rktype ${inst.tipo==='banco'?'cAA':'cAAA'}">${inst.tipo==='banco'?'Banco':'Coop'}</span>
+      </div>
+      <div class="rkbar"><div class="rkfill" style="width:${w}%;background:${i<3?'var(--green)':'var(--border2)'}"></div></div>
+      <div class="rktasa" style="color:${i<3?'var(--green)':'var(--text2)'}">${t.toFixed(2)}%</div>
+      <div class="rkliq">bloqueada</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Render all ───────────────────────────────────────────────
 function renderAll() {
-  if (!DATA) return;
-  renderTb(DATA.bancos, 'tb-bancos');
-  renderTb(DATA.cooperativas, 'tb-coops');
+  if(!DATA) return;
+  renderTb(DATA.bancos,'tb-bancos');
+  renderTb(DATA.cooperativas,'tb-coops');
+  renderAhorro();
   renderRk();
   const m = DATA.meta||{};
   document.getElementById('hdr-fecha').textContent = m.fechaActualizacion||'—';
   document.getElementById('hdr-inst').textContent = (m.totalInstituciones||'—')+' instituciones';
   document.getElementById('hdr-avgb').textContent = (m.promedioBancos||'—')+'%';
   document.getElementById('hdr-avgc').textContent = (m.promedioCoops||'—')+'%';
-  document.getElementById('tk1').textContent = (m.promedioBancos||'—')+'%';
-  document.getElementById('tk2').textContent = (m.promedioCoops||'—')+'%';
+  document.getElementById('hdr-mejor-ahorro').textContent = (m.mejorAhorro||'—')+'%';
   const mejor = Math.max(...[...DATA.bancos,...DATA.cooperativas].map(i=>Math.max(...i.tasas.map(t=>t.digital))));
-  document.getElementById('tk3').textContent = mejor.toFixed(2)+'%';
-  document.getElementById('tkr').style.display = 'flex';
-  document.getElementById('src-lbl').textContent = 'data/tasas.json · '+m.fechaActualizacion;
-  document.getElementById('sdot').className = 'sdot ok';
-  document.getElementById('stxt').textContent =
-    `✅ Datos cargados · ${m.fechaActualizacion} · ${m.totalInstituciones} instituciones · Fuente: ${m.fuentePrincipal||'tarifarios oficiales'}`;
+  const mejorAhorro = DATA.cuentasAhorro ? Math.max(...DATA.cuentasAhorro.map(c=>c.tasa)) : 0;
+  document.getElementById('tk1').textContent=(m.promedioBancos||'—')+'%';
+  document.getElementById('tk2').textContent=(m.promedioCoops||'—')+'%';
+  document.getElementById('tk3').textContent=mejor.toFixed(2)+'%';
+  document.getElementById('tk4').textContent=mejorAhorro.toFixed(2)+'%';
+  document.getElementById('tkr').style.display='flex';
+  document.getElementById('src-lbl').textContent='data/tasas.json · '+(m.fechaActualizacion||'—');
+  document.getElementById('sdot').className='sdot ok';
+  document.getElementById('stxt').textContent=`✅ Datos cargados · ${m.fechaActualizacion} · ${m.totalInstituciones} instituciones plazo + ${m.totalCuentasAhorro||0} cuentas ahorro`;
+  document.getElementById('badge-polizas').textContent = (DATA.bancos.length+DATA.cooperativas.length);
+  document.getElementById('badge-ahorro').textContent = (DATA.cuentasAhorro||[]).length;
 }
 
-// Lee el JSON del mismo repositorio — completamente gratis
+// ── Fetch ────────────────────────────────────────────────────
 fetch('https://raw.githubusercontent.com/Financiero-RD/InversionesEC/main/data/tasas.json')
-  .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
-  .then(d => { DATA = d; renderAll(); })
-  .catch(err => {
-    document.getElementById('sdot').className = 'sdot';
-    document.getElementById('stxt').textContent = '⚠ Error al cargar: '+err.message+' — asegúrate de abrir el archivo desde un servidor o GitHub Pages';
+  .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(d=>{DATA=d;renderAll();})
+  .catch(err=>{
+    document.getElementById('sdot').className='sdot';
+    document.getElementById('stxt').textContent='⚠ Error al cargar datos: '+err.message;
   });
 </script>
 </body>
