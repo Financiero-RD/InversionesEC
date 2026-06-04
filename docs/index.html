@@ -244,6 +244,16 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     <!-- PÓLIZAS -->
     <div id="sec-polizas">
       <div class="sl">Bancos privados · Depósito a plazo fijo</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text3)">
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#FFD100"></div>Pichincha</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#E3051B"></div>Guayaquil</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#00A650"></div>Produbanco</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#F47920"></div>Internacional</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#E3051B;opacity:.6"></div>Solidario</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#005BAC"></div>Pacífico</div>
+      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#1B3A6B"></div>BGR</div>
+      <div style="display:flex;align-items:center;gap:5px;margin-left:12px;border:1px solid #fff;padding:2px 8px;border-radius:3px;color:#fff">⬜ = tasa más alta</div>
+    </div>
       <div class="tw"><table><thead><tr>
         <th>Institución</th><th>Cal.</th>
         <th>31–60d</th><th>61–90d</th><th>91–180d</th><th>181–360d</th><th>361+d</th><th>Min $</th>
@@ -498,14 +508,26 @@ function maxTasa() {
 function renderTb(insts, id) {
   const mx = maxTasa();
   document.getElementById(id).innerHTML = insts.map(inst => {
+    const color = inst.color || 'var(--green)';
     const cells = inst.tasas.map(t => {
       const best = t.digital===mx;
       const w = (t.digital/mx*68).toFixed(0);
-      return `<td class="rc"><span class="rv ${best?'best':''}">${t.digital.toFixed(2)}%</span><div class="rb" style="width:${w}px;background:${best?'var(--green)':'var(--border2)'}"></div></td>`;
+      return `<td class="rc" style="${best?'outline:2px solid #fff;outline-offset:-2px;border-radius:4px;':''}">
+        <span class="rv" style="${best?'color:#fff;font-weight:800;':'color:'+color+';'}">${t.digital.toFixed(2)}%</span>
+        <div class="rb" style="width:${w}px;background:${best?'#fff':color};opacity:${best?'0.9':'0.4'}"></div>
+      </td>`;
     }).join('');
     const instStr = encodeURIComponent(JSON.stringify(inst));
     return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
-      <td><div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}</div><div class="itype">${inst.tipo==='banco'?'Banco privado':'Cooperativa Seg.1'}</div></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:3px;height:32px;border-radius:2px;background:${color};flex-shrink:0"></div>
+          <div>
+            <div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}</div>
+            <div class="itype">${inst.tipo==='banco'?'Banco privado':'Cooperativa Seg.1'}</div>
+          </div>
+        </div>
+      </td>
       <td><span class="cal ${calCls(inst.calificacion)}">${inst.calificacion}</span></td>
       ${cells}
       <td style="font-family:var(--mono);color:var(--text2)">$${inst.montoMin}</td>
@@ -609,14 +631,19 @@ function renderRk() {
   document.getElementById('rkl').innerHTML = all.map((inst,i) => {
     const t=Math.max(...inst.tasas.map(x=>x.digital));
     const w=(t/mx*100).toFixed(1);
+    const color = inst.color || 'var(--green)';
     const instStr=encodeURIComponent(JSON.stringify(inst));
     return `<div class="rkrow" onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
       <div class="rkpos">${i<3?med[i]:(i+1)}</div>
-      <div style="flex:1"><div class="rkname">${inst.nombre}</div>
-        <span class="rktype ${inst.tipo==='banco'?'cAA':'cAAA'}">${inst.tipo==='banco'?'Banco':'Coop'}</span>
+      <div style="display:flex;align-items:center;gap:8px;flex:1">
+        <div style="width:3px;height:28px;border-radius:2px;background:${color};flex-shrink:0"></div>
+        <div>
+          <div class="rkname">${inst.nombre}</div>
+          <span class="rktype ${inst.tipo==='banco'?'cAA':'cAAA'}">${inst.tipo==='banco'?'Banco':'Coop'}</span>
+        </div>
       </div>
-      <div class="rkbar"><div class="rkfill" style="width:${w}%;background:${i<3?'var(--green)':'var(--border2)'}"></div></div>
-      <div class="rktasa" style="color:${i<3?'var(--green)':'var(--text2)'}">${t.toFixed(2)}%</div>
+      <div class="rkbar"><div class="rkfill" style="width:${w}%;background:${color}"></div></div>
+      <div class="rktasa" style="color:${color}">${t.toFixed(2)}%</div>
       <div class="rkliq">bloqueada</div>
     </div>`;
   }).join('');
