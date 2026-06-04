@@ -10,7 +10,8 @@
     "promedioBancos": 5.67,
     "promedioCoops": 8.0,
     "mejorAhorro": 6.0,
-    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días."
+    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días.",
+    "tasaMaximaSistema": 9.0
   },
   "bancos": [
     {
@@ -57,7 +58,8 @@
           "digital": 5.7,
           "agencia": 5.4
         }
-      ]
+      ],
+      "color": "#FFD100"
     },
     {
       "id": "guayaquil",
@@ -103,7 +105,8 @@
           "digital": 5.85,
           "agencia": 5.5
         }
-      ]
+      ],
+      "color": "#E3051B"
     },
     {
       "id": "produbanco",
@@ -149,7 +152,8 @@
           "digital": 5.9,
           "agencia": 5.6
         }
-      ]
+      ],
+      "color": "#00A650"
     },
     {
       "id": "internacional",
@@ -195,7 +199,8 @@
           "digital": 4.95,
           "agencia": 4.7
         }
-      ]
+      ],
+      "color": "#F47920"
     },
     {
       "id": "solidario",
@@ -241,7 +246,8 @@
           "digital": 6.01,
           "agencia": 5.7
         }
-      ]
+      ],
+      "color": "#E3051B"
     },
     {
       "id": "pacifico",
@@ -287,7 +293,8 @@
           "digital": 5.5,
           "agencia": 5.2
         }
-      ]
+      ],
+      "color": "#005BAC"
     },
     {
       "id": "ruminhahui",
@@ -332,7 +339,8 @@
           "digital": 5.75,
           "agencia": 5.5
         }
-      ]
+      ],
+      "color": "#1B3A6B"
     }
   ],
   "cooperativas": [
@@ -380,7 +388,8 @@
           "digital": 9.0,
           "agencia": 9.0
         }
-      ]
+      ],
+      "color": "#003087"
     },
     {
       "id": "jep",
@@ -426,7 +435,8 @@
           "digital": 8.0,
           "agencia": 8.0
         }
-      ]
+      ],
+      "color": "#FF6600"
     },
     {
       "id": "jardin",
@@ -471,7 +481,8 @@
           "digital": 7.9,
           "agencia": 7.9
         }
-      ]
+      ],
+      "color": "#009B3A"
     },
     {
       "id": "cooprogreso",
@@ -517,7 +528,8 @@
           "digital": 7.6,
           "agencia": 7.6
         }
-      ]
+      ],
+      "color": "#C8002E"
     },
     {
       "id": "alianza",
@@ -563,7 +575,8 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ]
+      ],
+      "color": "#7B2D8B"
     },
     {
       "id": "octubre",
@@ -609,7 +622,8 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ]
+      ],
+      "color": "#1A5C2A"
     }
   ],
   "cuentasAhorro": [
