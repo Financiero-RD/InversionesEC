@@ -6,13 +6,32 @@
 <title>TasasEC — Inversiones y Ahorros Ecuador</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-:root{--bg:#0A0F0A;--bg2:#111811;--bg3:#182018;--border:#1E2E1E;--border2:#2A3E2A;--green:#3DFF7A;--green2:#22C55E;--gdim:#1A3D28;--amber:#F5A623;--red:#FF5050;--blue:#5BB8FF;--purple:#A855F7;--teal:#2DD4BF;--text:#E8F0E8;--text2:#8FA88F;--text3:#4A5F4A;--mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'Instrument Sans',sans-serif}
+/* ── TEMA CLARO (por defecto) ── */
+:root{
+  --bg:#F5F7F5;--bg2:#FFFFFF;--bg3:#EDF0ED;
+  --border:#D4DDD4;--border2:#B8CCB8;
+  --green:#16A34A;--green2:#15803D;--gdim:#DCFCE7;
+  --amber:#D97706;--red:#DC2626;--blue:#2563EB;--purple:#7C3AED;--teal:#0D9488;
+  --text:#0F1F0F;--text2:#374837;--text3:#6B7F6B;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'Instrument Sans',sans-serif
+}
+/* ── TEMA OSCURO ── */
+html.dark{
+  --bg:#0A0F0A;--bg2:#111811;--bg3:#182018;
+  --border:#1E2E1E;--border2:#2A3E2A;
+  --green:#3DFF7A;--green2:#22C55E;--gdim:#1A3D28;
+  --amber:#F5A623;--red:#FF5050;--blue:#5BB8FF;--purple:#A855F7;--teal:#2DD4BF;
+  --text:#E8F0E8;--text2:#8FA88F;--text3:#4A5F4A;
+  --shadow:none;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:999}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s}
+html.dark body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:999}
 
 /* HEADER */
-header{border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;background:rgba(10,15,10,.96);backdrop-filter:blur(12px)}
+header{border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;background:rgba(245,247,245,.96);backdrop-filter:blur(12px);box-shadow:var(--shadow);transition:background .25s,border-color .25s}
+html.dark header{background:rgba(10,15,10,.96)}
 .logo-row{display:flex;align-items:center;gap:12px;padding:14px 0}
 .dot{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
@@ -64,7 +83,7 @@ thead tr{border-bottom:1px solid var(--border2)}
 th{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);padding:7px 10px;text-align:left;white-space:nowrap}
 th:not(:first-child){text-align:center}
 tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
-tbody tr:hover{background:var(--bg2)}
+tbody tr:hover{background:var(--bg3)}
 td{padding:11px 10px;vertical-align:middle}
 td:not(:first-child){text-align:center;font-family:var(--mono)}
 .iname{font-weight:600;color:var(--text);font-size:13px}
@@ -100,7 +119,7 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .ac-restriccion{font-size:10px;color:var(--amber);margin-top:8px;line-height:1.4;display:flex;gap:5px}
 
 /* COMPARADOR */
-.comp-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:18px;margin-bottom:28px}
+.comp-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:28px;box-shadow:var(--shadow)}
 .comp-title{font-family:var(--serif);font-size:18px;margin-bottom:4px}
 .comp-sub{font-size:11px;color:var(--text2);margin-bottom:16px}
 .comp-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
@@ -118,7 +137,7 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .comp-liq{font-family:var(--mono);font-size:9px;min-width:70px;text-align:right}
 
 /* DRAWER */
-#drw{position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:var(--bg2);border-left:1px solid var(--border2);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:200;overflow-y:auto;padding:24px}
+#drw{position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:var(--bg2);border-left:1px solid var(--border2);box-shadow:-4px 0 20px rgba(0,0,0,.12);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:200;overflow-y:auto;padding:24px}
 #drw.open{transform:translateX(0)}
 #drw-bk{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:199}
 .dclose{position:absolute;top:16px;right:16px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);width:28px;height:28px;border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
@@ -139,8 +158,8 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .use-btn:hover{background:#224A32}
 
 /* RANKING */
-.rkrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
-.rkrow:hover{background:var(--bg2)}
+.rkrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;border-radius:4px;padding-left:6px}
+.rkrow:hover{background:var(--bg3)}
 .rkpos{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:22px}
 .rkname{font-size:13px;font-weight:600;flex:1;line-height:1.2}
 .rktype{font-family:var(--mono);font-size:8px;padding:1px 5px;border-radius:2px;text-transform:uppercase}
@@ -150,13 +169,13 @@ td:not(:first-child){text-align:center;font-family:var(--mono)}
 .rkliq{font-family:var(--mono);font-size:9px;color:var(--text3);min-width:70px;text-align:right}
 
 /* CALC */
-.cbox{background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:18px;margin-bottom:28px}
+.cbox{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:28px;box-shadow:var(--shadow)}
 .cgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
 .cf label{display:block;font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
-.cf input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:3px;padding:7px 9px;color:var(--text);font-family:var(--mono);font-size:13px;font-weight:500;outline:none;transition:border-color .15s}
+.cf input{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:4px;padding:7px 9px;color:var(--text);font-family:var(--mono);font-size:13px;font-weight:500;outline:none;transition:border-color .15s;box-shadow:inset 0 1px 2px rgba(0,0,0,.04)}
 .cf input:focus{border-color:var(--green)}
 .cres{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.cr{background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:10px;text-align:center}
+.cr{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:10px;text-align:center;box-shadow:var(--shadow)}
 .crl{font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
 .crv{font-family:var(--mono);font-size:15px;font-weight:500}
 
@@ -191,6 +210,7 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     <div class="hs"><b id="hdr-avgb">—</b><span>avg pólizas bancos</span></div>
     <div class="hs"><b id="hdr-avgc">—</b><span>avg pólizas coops</span></div>
     <div class="hs"><b id="hdr-mejor-ahorro">—</b><span>mejor cta. ahorro</span></div>
+    <button id="theme-btn" onclick="toggleTheme()" title="Cambiar tema" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;width:34px;height:34px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0">🌙</button>
   </div>
 </header>
 
@@ -410,6 +430,24 @@ function setVista(v, btn) {
 }
 
 // ── Calculadora ─────────────────────────────────────────────
+// ── Tema claro / oscuro ──────────────────────────────────────
+function toggleTheme(){
+  const isDark = document.documentElement.classList.toggle('dark');
+  document.getElementById('theme-btn').textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('tasasec-theme', isDark ? 'dark' : 'light');
+}
+// Por defecto: claro (no añadir clase dark a menos que el usuario lo haya guardado)
+(function initTheme(){
+  const saved = localStorage.getItem('tasasec-theme');
+  if(saved === 'dark'){
+    document.documentElement.classList.add('dark');
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('theme-btn');
+      if(btn) btn.textContent = '☀️';
+    });
+  }
+})();
+
 // ── Canal digital/agencia ─────────────────────────────────
 let canalActivo = 'digital'; // 'digital' | 'agencia'
 function setCanal(c){
@@ -611,17 +649,21 @@ function renderTb(insts, id) {
 }
 
 // ── Render cuentas de ahorro ─────────────────────────────────
-const TIPO_COLORS = {
-  ahorro_especial: ['var(--green)', '#0A2010'],
-  ahorro_programado: ['var(--purple)', '#150A20'],
-  ahorro_tradicional: ['var(--text3)', '#0D1117']
-};
+function getTipoColors(tipo){
+  const dark = document.documentElement.classList.contains('dark');
+  const map = {
+    ahorro_especial:   ['var(--green)',  dark?'#0A2010':'#F0FDF4'],
+    ahorro_programado: ['var(--purple)', dark?'#150A20':'#FAF5FF'],
+    ahorro_tradicional:['var(--text3)',  dark?'#0D1117':'#F9FAFB'],
+  };
+  return map[tipo] || ['var(--text3)', dark?'#0D1117':'#F9FAFB'];
+}
 function renderAhorro() {
   if(!DATA || !DATA.cuentasAhorro) return;
   const maxT = Math.max(...DATA.cuentasAhorro.map(c=>c.tasa));
   const grid = document.getElementById('ahorro-grid');
   grid.innerHTML = DATA.cuentasAhorro.map(ca => {
-    const [col, bg] = TIPO_COLORS[ca.tipo] || ['var(--text3)','#0D1117'];
+    const [col, bg] = getTipoColors(ca.tipo);
     const w = (ca.tasa/maxT*100).toFixed(0);
     const liqTag = ca.liquidez==='inmediata'
       ? '<span class="ac-tag green">✓ Retiro libre</span>'
