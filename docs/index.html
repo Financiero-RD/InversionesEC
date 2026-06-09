@@ -255,10 +255,11 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     <button class="tb" id="btn-ranking" onclick="setVista('ranking',this)">🏆 Ranking</button>
     <button class="tb" id="btn-calc" onclick="setVista('calc',this)">🧮 Calculadora</button>
     <button class="tb" id="btn-freq" onclick="setVista('freq',this)">🔄 Frecuencias</button>
-    <div style="display:flex;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:3px;margin-left:8px">
-      <button id="btn-canal-digital" class="tb on" style="margin:0;border-radius:2px;font-size:9px;padding:4px 10px" onclick="setCanal('digital')">📱 Digital</button>
-      <button id="btn-canal-agencia" class="tb" style="margin:0;border-radius:2px;font-size:9px;padding:4px 10px" onclick="setCanal('agencia')">🏢 Agencia</button>
+        <div id="canal-toggle-wrap" style="display:flex;gap:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:3px;margin-left:8px">
+      <button id="btn-canal-digital" class="tb on" style="margin:0;border-radius:4px;font-size:10px;padding:5px 12px;display:flex;align-items:center;gap:4px" onclick="setCanal('digital')">📱 Digital</button>
+      <button id="btn-canal-agencia" class="tb" style="margin:0;border-radius:4px;font-size:10px;padding:5px 12px;display:flex;align-items:center;gap:4px" onclick="setCanal('agencia')">🏢 Agencia</button>
     </div>
+    <div id="canal-lbl" style="font-family:var(--mono);font-size:10px;color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:4px 10px;border-radius:3px;display:flex;align-items:center;gap:5px">📱 Tasas digitales</div>
     <div class="src-badge"><div class="dot-sm"></div><span id="src-lbl">data/tasas.json</span></div>
   </div>
 
@@ -452,9 +453,19 @@ function toggleTheme(){
 let canalActivo = 'digital'; // 'digital' | 'agencia'
 function setCanal(c){
   canalActivo = c;
+  // Actualizar botones activos
   document.getElementById('btn-canal-digital').classList.toggle('on', c==='digital');
   document.getElementById('btn-canal-agencia').classList.toggle('on', c==='agencia');
-  if(DATA){ renderTb(DATA.bancos,'tb-bancos'); renderTb(DATA.cooperativas,'tb-coops'); renderRk(); }
+  // Actualizar etiqueta en status bar
+  const lbl = document.getElementById('canal-lbl');
+  if(lbl) lbl.textContent = c==='digital' ? '📱 Tasas digitales' : '🏢 Tasas agencia';
+  // Re-renderizar tabla y ranking con nuevas tasas
+  if(DATA){
+    renderTb(DATA.bancos,'tb-bancos');
+    renderTb(DATA.cooperativas,'tb-coops');
+    renderRk();
+    renderComparar();
+  }
 }
 
 // ── Calculadora con fórmula 360 días (estándar BCE Ecuador) ──
