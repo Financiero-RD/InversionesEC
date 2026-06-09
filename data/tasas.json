@@ -1,7 +1,7 @@
 {
   "meta": {
     "fechaActualizacion": "June 2026",
-    "fechaISO": "2026-06-04",
+    "fechaISO": "2026-06-09",
     "tasaReferencialBCE": null,
     "fuentePrincipal": "Tarifarios oficiales verificados + BCE",
     "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
@@ -10,8 +10,7 @@
     "promedioBancos": 5.67,
     "promedioCoops": 8.0,
     "mejorAhorro": 6.0,
-    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días.",
-    "tasaMaximaSistema": 9.0
+    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días."
   },
   "bancos": [
     {
@@ -58,8 +57,7 @@
           "digital": 5.7,
           "agencia": 5.4
         }
-      ],
-      "color": "#FFD100"
+      ]
     },
     {
       "id": "guayaquil",
@@ -105,8 +103,7 @@
           "digital": 5.85,
           "agencia": 5.5
         }
-      ],
-      "color": "#E3051B"
+      ]
     },
     {
       "id": "produbanco",
@@ -128,7 +125,7 @@
       ],
       "tasas": [
         {
-          "plazo": "31–60 días",
+          "plazo": "30–60 días",
           "digital": 3.9,
           "agencia": 3.6
         },
@@ -148,12 +145,11 @@
           "agencia": 5.1
         },
         {
-          "plazo": "361+ días",
+          "plazo": "361–450 días",
           "digital": 5.9,
           "agencia": 5.6
         }
-      ],
-      "color": "#00A650"
+      ]
     },
     {
       "id": "internacional",
@@ -199,8 +195,7 @@
           "digital": 4.95,
           "agencia": 4.7
         }
-      ],
-      "color": "#F47920"
+      ]
     },
     {
       "id": "solidario",
@@ -242,12 +237,11 @@
           "agencia": 5.2
         },
         {
-          "plazo": "361+ días",
+          "plazo": "365+ días",
           "digital": 6.01,
           "agencia": 5.7
         }
-      ],
-      "color": "#E3051B"
+      ]
     },
     {
       "id": "pacifico",
@@ -256,7 +250,7 @@
       "calificacion": "AA+",
       "seguro": 32000,
       "montoMin": 500,
-      "web": "bancodelpacifico.com",
+      "web": "bancodelpacífico.com",
       "fechaMes": "June 2026",
       "esNuevo": false,
       "pasos": [
@@ -293,8 +287,7 @@
           "digital": 5.5,
           "agencia": 5.2
         }
-      ],
-      "color": "#005BAC"
+      ]
     },
     {
       "id": "ruminhahui",
@@ -339,8 +332,7 @@
           "digital": 5.75,
           "agencia": 5.5
         }
-      ],
-      "color": "#1B3A6B"
+      ]
     }
   ],
   "cooperativas": [
@@ -388,8 +380,7 @@
           "digital": 9.0,
           "agencia": 9.0
         }
-      ],
-      "color": "#003087"
+      ]
     },
     {
       "id": "jep",
@@ -435,8 +426,7 @@
           "digital": 8.0,
           "agencia": 8.0
         }
-      ],
-      "color": "#FF6600"
+      ]
     },
     {
       "id": "jardin",
@@ -481,8 +471,7 @@
           "digital": 7.9,
           "agencia": 7.9
         }
-      ],
-      "color": "#009B3A"
+      ]
     },
     {
       "id": "cooprogreso",
@@ -528,8 +517,7 @@
           "digital": 7.6,
           "agencia": 7.6
         }
-      ],
-      "color": "#C8002E"
+      ]
     },
     {
       "id": "alianza",
@@ -575,8 +563,7 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ],
-      "color": "#7B2D8B"
+      ]
     },
     {
       "id": "octubre",
@@ -622,8 +609,7 @@
           "digital": 7.75,
           "agencia": 7.75
         }
-      ],
-      "color": "#1A5C2A"
+      ]
     }
   ],
   "cuentasAhorro": [
