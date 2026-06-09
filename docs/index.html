@@ -235,6 +235,10 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     <button class="tb" id="btn-ranking" onclick="setVista('ranking',this)">🏆 Ranking</button>
     <button class="tb" id="btn-calc" onclick="setVista('calc',this)">🧮 Calculadora</button>
     <button class="tb" id="btn-freq" onclick="setVista('freq',this)">🔄 Frecuencias</button>
+    <div style="display:flex;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:3px;padding:3px;margin-left:8px">
+      <button id="btn-canal-digital" class="tb on" style="margin:0;border-radius:2px;font-size:9px;padding:4px 10px" onclick="setCanal('digital')">📱 Digital</button>
+      <button id="btn-canal-agencia" class="tb" style="margin:0;border-radius:2px;font-size:9px;padding:4px 10px" onclick="setCanal('agencia')">🏢 Agencia</button>
+    </div>
     <div class="src-badge"><div class="dot-sm"></div><span id="src-lbl">data/tasas.json</span></div>
   </div>
 
@@ -295,19 +299,23 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
   <div id="vista-calc" style="display:none">
     <div class="sl">Simulador de rendimiento</div>
     <div class="cbox">
-      <div style="font-family:var(--serif);font-size:20px;margin-bottom:4px">¿Cuánto ganarías?</div>
-      <div style="font-size:11px;color:var(--text2)">Interés compuesto capitalizado mensualmente</div>
+      <div style="font-family:var(--serif);font-size:20px;margin-bottom:2px">¿Cuánto ganarías?</div>
+      <div style="font-size:11px;color:var(--text2);margin-bottom:14px">Fórmula oficial BCE · Base 360 días · Retención SRI aplicada automáticamente</div>
       <div class="cgrid">
         <div class="cf"><label>Capital ($)</label><input id="cc" type="number" value="5000" oninput="calcular()"></div>
         <div class="cf"><label>Tasa anual (%)</label><input id="ct" type="number" value="7.5" step="0.01" oninput="calcular()"></div>
         <div class="cf"><label>Plazo (meses)</label><input id="cp" type="number" value="12" oninput="calcular()"></div>
       </div>
-      <div class="cres">
-        <div class="cr"><div class="crl">Capital</div><div class="crv" id="cr1" style="color:var(--text3)">—</div></div>
-        <div class="cr"><div class="crl">Interés ganado</div><div class="crv" id="cr2" style="color:var(--green)">—</div></div>
-        <div class="cr"><div class="crl">Total final</div><div class="crv" id="cr3" style="color:var(--amber)">—</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:7px;margin-top:4px">
+        <div class="cr"><div class="crl">Capital</div><div class="crv" id="cr-capital" style="color:var(--text3)">—</div></div>
+        <div class="cr"><div class="crl">Interés bruto</div><div class="crv" id="cr-bruto" style="color:var(--blue)">—</div></div>
+        <div class="cr"><div class="crl">Retención SRI</div><div class="crv" id="cr-sri" style="color:var(--amber);font-size:12px">—</div></div>
+        <div class="cr"><div class="crl">Interés neto</div><div class="crv" id="cr-neto" style="color:var(--green)">—</div></div>
+        <div class="cr" style="border-color:var(--green2)"><div class="crl">Total a recibir</div><div class="crv" id="cr-total" style="color:var(--green2)">—</div></div>
       </div>
-      <div style="margin-top:10px;font-size:10px;color:var(--text3)">💡 Haz clic en cualquier institución → "Aplicar tasa" para calcular con su tasa real.</div>
+      <div id="calc-nota" style="margin-top:10px;font-size:11px;line-height:1.5;padding:8px 10px;background:var(--bg3);border-radius:4px;border:1px solid var(--border)">💡 Haz clic en cualquier institución → "Aplicar tasa" para calcular con su tasa real.</div>
+      <div id="calc-cosede" style="display:none;margin-top:8px;font-size:11px;line-height:1.5;padding:8px 10px;background:#2A1F0D;border:1px solid #4A3A1A;border-radius:4px;color:var(--amber)"></div>
+      <div id="calc-alerta-monto" style="display:none;margin-top:8px;font-size:11px;line-height:1.5;padding:8px 10px;background:#2A0D0D;border:1px solid #4A1A1A;border-radius:4px;color:var(--red)"></div>
     </div>
   </div>
 
@@ -402,14 +410,67 @@ function setVista(v, btn) {
 }
 
 // ── Calculadora ─────────────────────────────────────────────
+// ── Canal digital/agencia ─────────────────────────────────
+let canalActivo = 'digital'; // 'digital' | 'agencia'
+function setCanal(c){
+  canalActivo = c;
+  document.getElementById('btn-canal-digital').classList.toggle('on', c==='digital');
+  document.getElementById('btn-canal-agencia').classList.toggle('on', c==='agencia');
+  if(DATA){ renderTb(DATA.bancos,'tb-bancos'); renderTb(DATA.cooperativas,'tb-coops'); renderRk(); }
+}
+
+// ── Calculadora con fórmula 360 días (estándar BCE Ecuador) ──
 function calcular() {
-  const m=parseFloat(document.getElementById('cc').value)||0;
-  const t=parseFloat(document.getElementById('ct').value)||0;
-  const p=parseInt(document.getElementById('cp').value)||0;
-  const i = m*Math.pow(1+t/100/12,p)-m;
-  document.getElementById('cr1').textContent = fmt(m);
-  document.getElementById('cr2').textContent = fmt(i);
-  document.getElementById('cr3').textContent = fmt(m+i);
+  const m   = parseFloat(document.getElementById('cc').value)||0;
+  const t   = parseFloat(document.getElementById('ct').value)||0;
+  const p   = parseInt(document.getElementById('cp').value)||0;
+  const dias = p * 30; // meses → días comerciales (30/mes, base 360)
+
+  // Interés simple base 360 (estándar BCE Ecuador)
+  const interesB = (m * (t/100) * dias) / 360;
+  // Retención SRI 3% si plazo < 181 días (vigente marzo 2026)
+  const retencion = dias < 181 ? interesB * 0.03 : 0;
+  const interesN  = interesB - retencion;
+
+  document.getElementById('cr-capital').textContent  = fmt(m);
+  document.getElementById('cr-bruto').textContent    = fmt(interesB);
+  document.getElementById('cr-sri').textContent      = retencion > 0 ? '-'+fmt(retencion) : 'Exento';
+  document.getElementById('cr-neto').textContent     = fmt(interesN);
+  document.getElementById('cr-total').textContent    = fmt(m + interesN);
+
+  // Nota SRI
+  const nota = document.getElementById('calc-nota');
+  if(nota){
+    if(dias < 181){
+      nota.innerHTML = `⚠️ <b>Retención SRI 3%</b> (plazo ${dias} días < 181): se descuentan <b>${fmt(retencion)}</b>. Invierte a <b>181+ días</b> (6+ meses) para quedar exento.`;
+      nota.style.background='#2A1F0D'; nota.style.borderColor='#4A3A1A'; nota.style.color='var(--amber)';
+    } else {
+      nota.innerHTML = `✅ <b>Exento de retención SRI</b> — plazo ${dias} días ≥ 181 días. Recibes el <b>100%</b> de tus intereses netos.`;
+      nota.style.background='#0F2318'; nota.style.borderColor='#1A4A2A'; nota.style.color='var(--green2)';
+    }
+  }
+  // Alerta COSEDE
+  const cosede = document.getElementById('calc-cosede');
+  if(cosede){
+    if(m > 32000){
+      cosede.style.display='block';
+      cosede.innerHTML = `⚠️ <b>Tu monto supera $32,000</b> — el límite del Seguro COSEDE por institución. El exceso <b>${fmt(m-32000)}</b> no está cubierto. Considera dividir en varias instituciones.`;
+    } else {
+      cosede.style.display='none';
+    }
+  }
+  // Alerta monto mínimo
+  alertaMontoMinimo(m);
+}
+
+function alertaMontoMinimo(monto) {
+  if(!DATA) return;
+  const alerta = document.getElementById('calc-alerta-monto');
+  if(!alerta) return;
+  const bloqueadas = [...DATA.bancos,...DATA.cooperativas].filter(i => i.montoMin > monto && monto > 0);
+  if(!bloqueadas.length){ alerta.style.display='none'; return; }
+  alerta.style.display='block';
+  alerta.innerHTML = `⛔ Con <b>${fmt(monto)}</b> no calificas en: ${bloqueadas.map(i=>`<b>${i.nombre}</b> (mín $${i.montoMin})`).join(', ')}.`;
 }
 calcular();
 
@@ -418,8 +479,13 @@ function cdrw() {
   document.getElementById('drw').classList.remove('open');
   document.getElementById('drw-bk').style.display='none';
 }
-function useTasa(t) {
+function useTasa(t, montoMin) {
   document.getElementById('ct').value = t.toFixed(2);
+  // Si el capital actual es menor al mínimo, lo ajusta automáticamente
+  const capActual = parseFloat(document.getElementById('cc').value)||0;
+  if(montoMin && capActual < montoMin){
+    document.getElementById('cc').value = montoMin;
+  }
   setVista('calc',document.getElementById('btn-calc'));
   calcular(); cdrw();
 }
@@ -453,7 +519,7 @@ function openDrawerPoliza(inst) {
       <div class="sl" style="font-size:8px">Cómo invertir</div>
       <ul class="steps">${pasos}</ul>
     </div>
-    <button class="use-btn" onclick="useTasa(${mejorT})">↗ Aplicar tasa ${mejorT.toFixed(2)}% en calculadora</button>`;
+    <button class="use-btn" onclick="useTasa(${mejorT}, ${inst.montoMin})">↗ Aplicar tasa ${mejorT.toFixed(2)}% en calculadora</button>`;
   document.getElementById('drw').classList.add('open');
   document.getElementById('drw-bk').style.display='block';
 }
@@ -495,7 +561,7 @@ function openDrawerAhorro(ca) {
       <div class="sl" style="font-size:8px">Cómo abrir paso a paso</div>
       <ul class="steps">${pasos}</ul>
     </div>
-    <button class="use-btn" onclick="useTasa(${ca.tasa})">↗ Aplicar tasa ${ca.tasa.toFixed(2)}% en calculadora</button>`;
+    <button class="use-btn" onclick="useTasa(${ca.tasa}, ${ca.montoMin})">↗ Aplicar tasa ${ca.tasa.toFixed(2)}% en calculadora</button>`;
   document.getElementById('drw').classList.add('open');
   document.getElementById('drw-bk').style.display='block';
 }
@@ -503,7 +569,12 @@ function openDrawerAhorro(ca) {
 // ── Render pólizas ───────────────────────────────────────────
 function maxTasa() {
   if(!DATA) return 9;
-  return Math.max(...[...DATA.bancos,...DATA.cooperativas].map(i=>Math.max(...i.tasas.map(t=>t.digital))));
+  let mx = 0;
+  for(const inst of [...DATA.bancos,...DATA.cooperativas]){
+    if(!inst.tasas || inst.tasas.length===0) continue;
+    for(const t of inst.tasas){ if(t.digital > mx) mx = t.digital; }
+  }
+  return mx || 9;
 }
 function renderTb(insts, id) {
   const mx = maxTasa();
@@ -518,19 +589,22 @@ function renderTb(insts, id) {
       </td>`;
     }).join('');
     const instStr = encodeURIComponent(JSON.stringify(inst));
-    return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
+    const montoFiltro = parseFloat(document.getElementById('cc')?.value)||0;
+    const noCalifica = montoFiltro > 0 && inst.montoMin > montoFiltro;
+    return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))"
+      style="${noCalifica?'opacity:0.35;':''}">
       <td>
         <div style="display:flex;align-items:center;gap:8px">
           <div style="width:3px;height:32px;border-radius:2px;background:${color};flex-shrink:0"></div>
           <div>
-            <div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}</div>
+            <div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}${noCalifica?'<span style="font-family:var(--mono);font-size:8px;color:var(--red);margin-left:6px;border:1px solid var(--red);padding:1px 5px;border-radius:2px">mín $'+inst.montoMin+'</span>':''}</div>
             <div class="itype">${inst.tipo==='banco'?'Banco privado':'Cooperativa Seg.1'}</div>
           </div>
         </div>
       </td>
       <td><span class="cal ${calCls(inst.calificacion)}">${inst.calificacion}</span></td>
       ${cells}
-      <td style="font-family:var(--mono);color:var(--text2)">$${inst.montoMin}</td>
+      <td style="font-family:var(--mono);color:${noCalifica?'var(--red)':'var(--text2)'}">$${inst.montoMin}</td>
     </tr>`;
   }).join('');
 }
@@ -662,8 +736,9 @@ function renderAll() {
   document.getElementById('hdr-avgb').textContent = (m.promedioBancos||'—')+'%';
   document.getElementById('hdr-avgc').textContent = (m.promedioCoops||'—')+'%';
   document.getElementById('hdr-mejor-ahorro').textContent = (m.mejorAhorro||'—')+'%';
-  const mejor = Math.max(...[...DATA.bancos,...DATA.cooperativas].map(i=>Math.max(...i.tasas.map(t=>t.digital))));
-  const mejorAhorro = DATA.cuentasAhorro ? Math.max(...DATA.cuentasAhorro.map(c=>c.tasa)) : 0;
+  const mejor = maxTasa();
+  const mejorAhorro = (DATA.cuentasAhorro && DATA.cuentasAhorro.length)
+    ? DATA.cuentasAhorro.reduce((mx,c)=>c.tasa>mx?c.tasa:mx, 0) : 0;
   document.getElementById('tk1').textContent=(m.promedioBancos||'—')+'%';
   document.getElementById('tk2').textContent=(m.promedioCoops||'—')+'%';
   document.getElementById('tk3').textContent=mejor.toFixed(2)+'%';
@@ -677,13 +752,24 @@ function renderAll() {
 }
 
 // ── Fetch ────────────────────────────────────────────────────
-fetch('https://raw.githubusercontent.com/Financiero-RD/InversionesEC/main/data/tasas.json')
-  .then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
-  .then(d=>{DATA=d;renderAll();})
-  .catch(err=>{
-    document.getElementById('sdot').className='sdot';
-    document.getElementById('stxt').textContent='⚠ Error al cargar datos: '+err.message;
-  });
+// Intenta primero ruta relativa (local/GitHub Pages), luego raw.githubusercontent como fallback
+const URLS = [
+  '../data/tasas.json',
+  'https://raw.githubusercontent.com/Financiero-RD/InversionesEC/main/data/tasas.json'
+];
+(async function loadData(){
+  for(const url of URLS){
+    try{
+      const r = await fetch(url);
+      if(!r.ok) continue;
+      DATA = await r.json();
+      renderAll();
+      return;
+    }catch(e){ continue; }
+  }
+  document.getElementById('sdot').className='sdot';
+  document.getElementById('stxt').textContent='⚠ No se pudieron cargar los datos. Verifica tu conexión.';
+})();
 </script>
 </body>
 </html>
