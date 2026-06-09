@@ -128,7 +128,7 @@
       ],
       "tasas": [
         {
-          "plazo": "30–60 días",
+          "plazo": "31–60 días",
           "digital": 3.9,
           "agencia": 3.6
         },
@@ -148,7 +148,7 @@
           "agencia": 5.1
         },
         {
-          "plazo": "361–450 días",
+          "plazo": "361+ días",
           "digital": 5.9,
           "agencia": 5.6
         }
@@ -242,7 +242,7 @@
           "agencia": 5.2
         },
         {
-          "plazo": "365+ días",
+          "plazo": "361+ días",
           "digital": 6.01,
           "agencia": 5.7
         }
@@ -256,7 +256,7 @@
       "calificacion": "AA+",
       "seguro": 32000,
       "montoMin": 500,
-      "web": "bancodelpacífico.com",
+      "web": "bancodelpacifico.com",
       "fechaMes": "June 2026",
       "esNuevo": false,
       "pasos": [
