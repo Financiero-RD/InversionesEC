@@ -245,8 +245,11 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     </button>
   </div>
 
+  <div id="alerta-datos" style="display:none;background:#2A1F0D;border:1px solid #4A3A1A;border-left:3px solid var(--amber);border-radius:4px;padding:12px 14px;font-size:11px;color:var(--amber);margin-bottom:16px;line-height:1.6">
+    ⚠️ <b>Algunos datos tienen más de 60 días sin verificar.</b> Las tasas marcadas como "referencial" pueden haber cambiado. Verifica en el tarifario oficial de cada institución antes de invertir.
+  </div>
   <div class="nota" id="nota-prod">
-    <b>🔒 Pólizas / Depósito a Plazo Fijo:</b> Bloqueas tu dinero por 31 a 450+ días y recibes entre <b>2.5% y 9% anual</b>. Ideal para dinero que no necesitas tocar. Desde marzo 2026 el SRI exime de impuesto si inviertes a <b>181+ días</b>.
+    <b>🔒 Pólizas / Depósito a Plazo Fijo:</b> Bloqueas tu dinero por 31 a 450+ días y recibes entre <b>2.5% y 7% anual</b>. Desde marzo 2026 el SRI exime de impuesto si inviertes a <b>181+ días</b>.
   </div>
 
   <!-- TABS DE VISTA -->
@@ -269,15 +272,19 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
     <!-- PÓLIZAS -->
     <div id="sec-polizas">
       <div class="sl">Bancos privados · Depósito a plazo fijo</div>
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text3)">
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#FFD100"></div>Pichincha</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#E3051B"></div>Guayaquil</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#00A650"></div>Produbanco</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#F47920"></div>Internacional</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#E3051B;opacity:.6"></div>Solidario</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#005BAC"></div>Pacífico</div>
-      <div style="display:flex;align-items:center;gap:5px"><div style="width:10px;height:10px;border-radius:2px;background:#1B3A6B"></div>BGR</div>
-      <div style="display:flex;align-items:center;gap:5px;margin-left:12px;border:1px solid #fff;padding:2px 8px;border-radius:3px;color:#fff">⬜ = tasa más alta</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10px">
+      <span style="color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:2px 8px;border-radius:3px">✓ verificado</span>
+      <span style="color:var(--text3)">= dato revisado desde tarifario oficial</span>
+      <span style="color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:2px 8px;border-radius:3px;margin-left:8px">~ referencial</span>
+      <span style="color:var(--text3)">= estimado — verifica en sitio oficial</span>
+      <span style="border:1.5px solid var(--text2);padding:2px 8px;border-radius:3px;color:var(--text2);margin-left:8px">⬜ tasa más alta</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;color:var(--text3)">
+      <span style="color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:2px 8px;border-radius:3px">✓ verificado</span>
+      <span style="font-size:10px;color:var(--text3)">= dato revisado desde tarifario oficial PDF</span>
+      <span style="margin-left:10px;color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:2px 8px;border-radius:3px">~ referencial</span>
+      <span style="font-size:10px;color:var(--text3)">= tasa estimada, verificar en sitio oficial</span>
+      <span style="margin-left:10px;border:1.5px solid var(--text);padding:2px 8px;border-radius:3px;color:var(--text)">⬜ tasa más alta</span>
     </div>
       <div class="tw"><table><thead><tr>
         <th>Institución</th><th>Cal.</th>
@@ -546,6 +553,18 @@ function openDrawerPoliza(inst) {
   const pasos = (inst.pasos||[]).map((p,i) =>
     `<li><div class="sn">${i+1}</div><span>${p}</span></li>`).join('');
   const mejorT = inst.tasas[inst.tasas.length-1].digital;
+  const esVerif = inst.verificado === true;
+  const verifBox = esVerif
+    ? `<div style="background:var(--gdim);border:1px solid var(--green2);border-radius:5px;padding:10px 12px;margin-top:12px;font-size:11px;line-height:1.5">
+        <div style="font-weight:700;color:var(--green2);margin-bottom:3px">✅ Datos verificados</div>
+        <div style="color:var(--text2)">Fuente: ${inst.fuenteVerificacion||'—'}</div>
+        <div style="color:var(--text3);margin-top:2px">Verificación: ${inst.fechaVerificacion||'—'}</div>
+       </div>`
+    : `<div style="background:#2A1F0D;border:1px solid #4A3A1A;border-radius:5px;padding:10px 12px;margin-top:12px;font-size:11px;line-height:1.5">
+        <div style="font-weight:700;color:var(--amber);margin-bottom:3px">⚠️ Tasa referencial</div>
+        <div style="color:var(--text2)">Esta tasa es estimada. Verifica el dato exacto en el tarifario oficial.</div>
+        ${inst.tarifarioURL ? `<a href="${inst.tarifarioURL}" target="_blank" style="color:var(--blue);font-family:var(--mono);font-size:10px;display:block;margin-top:6px;word-break:break-all">🔗 Ver tarifario oficial →</a>` : ''}
+       </div>`;
   document.getElementById('drw-c').innerHTML = `
     <button class="dclose" onclick="cdrw()">✕</button>
     <div style="margin-top:6px">
@@ -553,6 +572,7 @@ function openDrawerPoliza(inst) {
       <div class="dname">${inst.nombre}</div>
       <span class="cal ${calCls(inst.calificacion)}">${inst.calificacion}</span>
       <span style="font-family:var(--mono);font-size:9px;color:var(--text3);margin-left:8px">Actualizado: ${inst.fechaMes||'—'}</span>
+      ${verifBox}
     </div>
     <div style="margin-top:18px">
       <div class="sl" style="font-size:8px">Tasas nominales anuales</div>
@@ -641,13 +661,22 @@ function renderTb(insts, id) {
     const instStr = encodeURIComponent(JSON.stringify(inst));
     const montoFiltro = parseFloat(document.getElementById('cc')?.value)||0;
     const noCalifica = montoFiltro > 0 && inst.montoMin > montoFiltro;
+    const esVerificado = inst.verificado === true;
+    const vBadge = esVerificado
+      ? `<span style="font-family:var(--mono);font-size:8px;color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:1px 5px;border-radius:2px;margin-left:5px">✓ verificado</span>`
+      : `<span style="font-family:var(--mono);font-size:8px;color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:1px 5px;border-radius:2px;margin-left:5px">~ referencial</span>`;
     return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))"
-      style="${noCalifica?'opacity:0.35;':''}">
+      style="${noCalifica?'opacity:0.38;':''}">
       <td>
         <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:3px;height:32px;border-radius:2px;background:${color};flex-shrink:0"></div>
+          <div style="width:3px;height:36px;border-radius:2px;background:${color};flex-shrink:0"></div>
           <div>
-            <div class="iname">${inst.nombre}${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}${noCalifica?'<span style="font-family:var(--mono);font-size:8px;color:var(--red);margin-left:6px;border:1px solid var(--red);padding:1px 5px;border-radius:2px">mín $'+inst.montoMin+'</span>':''}</div>
+            <div class="iname">
+              ${inst.nombre}
+              ${vBadge}
+              ${inst.esNuevo?'<span class="ntag">NUEVO</span>':''}
+              ${noCalifica?'<span style="font-family:var(--mono);font-size:8px;color:var(--red);border:1px solid var(--red);padding:1px 5px;border-radius:2px;margin-left:4px">mín $'+inst.montoMin+'</span>':''}
+            </div>
             <div class="itype">${inst.tipo==='banco'?'Banco privado':'Cooperativa Seg.1'}</div>
           </div>
         </div>
@@ -766,7 +795,11 @@ function renderRk() {
       <div style="display:flex;align-items:center;gap:8px;flex:1">
         <div style="width:3px;height:28px;border-radius:2px;background:${color};flex-shrink:0"></div>
         <div>
-          <div class="rkname">${inst.nombre}</div>
+          <div class="rkname">${inst.nombre}
+            ${inst.verificado
+              ? `<span style="font-family:var(--mono);font-size:8px;color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:1px 5px;border-radius:2px;margin-left:5px">✓</span>`
+              : `<span style="font-family:var(--mono);font-size:8px;color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:1px 5px;border-radius:2px;margin-left:5px">~</span>`}
+          </div>
           <span class="rktype ${inst.tipo==='banco'?'cAA':'cAAA'}">${inst.tipo==='banco'?'Banco':'Coop'}</span>
         </div>
       </div>
@@ -800,7 +833,14 @@ function renderAll() {
   document.getElementById('tkr').style.display='flex';
   document.getElementById('src-lbl').textContent='data/tasas.json · '+(m.fechaActualizacion||'—');
   document.getElementById('sdot').className='sdot ok';
-  document.getElementById('stxt').textContent=`✅ Datos cargados · ${m.fechaActualizacion} · ${m.totalInstituciones} instituciones plazo + ${m.totalCuentasAhorro||0} cuentas ahorro`;
+  // Mostrar alerta si datos desactualizados
+  const alertaEl = document.getElementById('alerta-datos');
+  if(alertaEl && m.alertaDesactualizacion) alertaEl.style.display='block';
+  // Status bar con info de verificación
+  const nVerif = m.totalVerificadas||0;
+  const nRef   = m.totalReferenciales||0;
+  document.getElementById('stxt').textContent=
+    `✅ ${m.fechaActualizacion} · ${nVerif} instituciones verificadas · ${nRef} referenciales · ${m.totalCuentasAhorro||0} cuentas ahorro`;
   document.getElementById('badge-polizas').textContent = (DATA.bancos.length+DATA.cooperativas.length);
   document.getElementById('badge-ahorro').textContent = (DATA.cuentasAhorro||[]).length;
 }
