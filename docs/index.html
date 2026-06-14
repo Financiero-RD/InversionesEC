@@ -319,8 +319,20 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
 
   <!-- ═══════════ VISTA: RANKING ═══════════ -->
   <div id="vista-ranking" style="display:none">
-    <div class="sl">Ranking por tasa · mayor a menor</div>
-    <div id="rkl"></div>
+    <div id="rk-polizas-wrap">
+      <div class="sl">Pólizas / Plazo fijo · ranking por tasa (361+ días digital)</div>
+      <div id="rkl"></div>
+    </div>
+    <div id="rk-ahorro-wrap" style="margin-top:28px">
+      <div class="sl">Cuentas de ahorro · ranking por tasa anual</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:var(--mono);font-size:10px;flex-wrap:wrap">
+        <span style="color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:2px 8px;border-radius:3px">✓ retiro libre</span>
+        <span style="color:var(--text3)">= puedes retirar cuando quieras</span>
+        <span style="color:var(--amber);border:1px solid var(--amber);padding:2px 8px;border-radius:3px;margin-left:8px">⏱ con restricción</span>
+        <span style="color:var(--text3)">= condiciones para acceder a la tasa</span>
+      </div>
+      <div id="rkl-ahorro"></div>
+    </div>
   </div>
 
   <!-- ═══════════ VISTA: CALCULADORA ═══════════ -->
@@ -439,14 +451,19 @@ function setVista(v, btn) {
 
 // ── Calculadora ─────────────────────────────────────────────
 // ── Tema claro / oscuro ──────────────────────────────────────
+// localStorage protegido — falla silenciosamente en iframes restringidos
+function lsGet(key){ try{ return localStorage.getItem(key); }catch(e){ return null; } }
+function lsSet(key,val){ try{ localStorage.setItem(key,val); }catch(e){} }
+
 function toggleTheme(){
   const isDark = document.documentElement.classList.toggle('dark');
-  document.getElementById('theme-btn').textContent = isDark ? '☀️' : '🌙';
-  localStorage.setItem('tasasec-theme', isDark ? 'dark' : 'light');
+  const btn = document.getElementById('theme-btn');
+  if(btn) btn.textContent = isDark ? '☀️' : '🌙';
+  lsSet('tasasec-theme', isDark ? 'dark' : 'light');
 }
-// Por defecto: claro (no añadir clase dark a menos que el usuario lo haya guardado)
+// Inicializar tema — por defecto claro
 (function initTheme(){
-  const saved = localStorage.getItem('tasasec-theme');
+  const saved = lsGet('tasasec-theme');
   if(saved === 'dark'){
     document.documentElement.classList.add('dark');
     document.addEventListener('DOMContentLoaded', () => {
@@ -471,6 +488,7 @@ function setCanal(c){
     renderTb(DATA.bancos,'tb-bancos');
     renderTb(DATA.cooperativas,'tb-coops');
     renderRk();
+    renderRkAhorro();
     renderComparar();
   }
 }
@@ -597,7 +615,7 @@ function openDrawerAhorro(ca) {
   const pasos = (ca.pasos||[]).map((p,i) =>
     `<li><div class="sn">${i+1}</div><span>${p}</span></li>`).join('');
   const vent = (ca.ventajas||[]).map(v=>`<li style="color:var(--green2)">✓ ${v}</li>`).join('');
-  const desv = (ca.desventajas||[]).map(v=>`<li style="color:var(--amber)">· ${v}</li>`).join('');
+  const desv = (ca.desventajas||[]).map(v=>`<li style="color:var(--text2)">· ${v}</li>`).join('');
   document.getElementById('drw-c').innerHTML = `
     <button class="dclose" onclick="cdrw()">✕</button>
     <div style="margin-top:6px">
@@ -617,12 +635,12 @@ function openDrawerAhorro(ca) {
       <div class="icell"><div class="icl">Web</div><div class="icv" style="font-size:10px">${ca.web||'—'}</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
-      <div style="background:#0F2318;border:1px solid #1A4A2A;border-radius:4px;padding:10px">
-        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;margin-bottom:6px">Ventajas</div>
+      <div style="background:var(--gdim);border:1px solid var(--green2);border-radius:4px;padding:10px">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--green2);text-transform:uppercase;margin-bottom:6px">✅ Ventajas</div>
         <ul style="list-style:none;font-size:11px;display:flex;flex-direction:column;gap:4px">${vent}</ul>
       </div>
-      <div style="background:#1C1008;border:1px solid #4A3A1A;border-radius:4px;padding:10px">
-        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);text-transform:uppercase;margin-bottom:6px">Considera</div>
+      <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:4px;padding:10px">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--amber);text-transform:uppercase;margin-bottom:6px">⚠️ Considera</div>
         <ul style="list-style:none;font-size:11px;display:flex;flex-direction:column;gap:4px">${desv}</ul>
       </div>
     </div>
@@ -690,13 +708,14 @@ function renderTb(insts, id) {
 
 // ── Render cuentas de ahorro ─────────────────────────────────
 function getTipoColors(tipo){
-  const dark = document.documentElement.classList.contains('dark');
+  // Siempre retornar variables CSS — nunca hexadecimales fijos
+  // Así el tema claro/oscuro funciona correctamente
   const map = {
-    ahorro_especial:   ['var(--green)',  dark?'#0A2010':'#F0FDF4'],
-    ahorro_programado: ['var(--purple)', dark?'#150A20':'#FAF5FF'],
-    ahorro_tradicional:['var(--text3)',  dark?'#0D1117':'#F9FAFB'],
+    ahorro_especial:    ['var(--green2)',  'var(--gdim)'],
+    ahorro_programado:  ['var(--purple)',  'var(--bg3)'],
+    ahorro_tradicional: ['var(--text2)',   'var(--bg3)'],
   };
-  return map[tipo] || ['var(--text3)', dark?'#0D1117':'#F9FAFB'];
+  return map[tipo] || ['var(--text2)', 'var(--bg3)'];
 }
 function renderAhorro() {
   if(!DATA || !DATA.cuentasAhorro) return;
@@ -723,7 +742,7 @@ function renderAhorro() {
           <div class="ac-tasa-label">anual</div>
         </div>
       </div>
-      <div class="ac-bar"><div class="ac-bar-fill" style="width:${w}%;background:${col}"></div></div>
+      <div class="ac-bar"><div class="ac-bar-fill" style="width:${w}%;background:${col};transition:width .6s ease"></div></div>
       <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-bottom:8px">${ca.descripcion||''}</div>
       <div class="ac-tags">
         ${liqTag}
@@ -740,45 +759,106 @@ function renderAhorro() {
 function renderComparar() {
   if(!DATA) return;
   const todos = [];
-  DATA.bancos.forEach(b => todos.push({
-    nombre: b.nombre, tasa: Math.max(...b.tasas.map(t=>t.digital)),
-    tipo: 'póliza', liquidez: 'bloqueada', inst: b, esPoliza: true
-  }));
-  DATA.cooperativas.forEach(c => todos.push({
-    nombre: c.nombre, tasa: Math.max(...c.tasas.map(t=>t.digital)),
-    tipo: 'póliza coop', liquidez: 'bloqueada', inst: c, esPoliza: true
-  }));
-  (DATA.cuentasAhorro||[]).forEach(ca => todos.push({
-    nombre: ca.producto+' · '+ca.banco, tasa: ca.tasa,
-    tipo: ca.tipo==='ahorro_especial'?'ahorro especial':'ahorro',
-    liquidez: ca.liquidez, inst: ca, esPoliza: false
-  }));
+
+  // Pólizas — estructura normalizada
+  [...DATA.bancos,...DATA.cooperativas].forEach(inst => {
+    if(!inst.tasas || !inst.tasas.length) return;
+    todos.push({
+      nombre:   inst.nombre,
+      subtitulo: inst.tipo==='banco' ? 'Banco · Póliza plazo fijo' : 'Cooperativa · Certificado depósito',
+      tasa:     Math.max(...inst.tasas.map(t=>t.digital)),
+      tipo:     inst.tipo==='banco' ? 'póliza banco' : 'póliza coop',
+      liquidez: 'bloqueada',
+      color:    inst.color || 'var(--blue)',
+      chipCls:  'chip-poliza',
+      esPoliza: true,
+      rawInst:  inst   // referencia directa, no serializada aquí
+    });
+  });
+
+  // Cuentas de ahorro — estructura normalizada
+  (DATA.cuentasAhorro||[]).forEach(ca => {
+    todos.push({
+      nombre:   ca.producto,
+      subtitulo: ca.banco,
+      tasa:     ca.tasa,
+      tipo:     ca.tipo==='ahorro_especial' ? 'ahorro especial'
+               : ca.tipo==='ahorro_programado' ? 'ahorro programado'
+               : 'ahorro tradicional',
+      liquidez: ca.liquidez || '—',
+      color:    'var(--green)',
+      chipCls:  ca.tipo==='ahorro_especial' ? 'chip-especial' : 'chip-ahorro',
+      esPoliza: false,
+      rawInst:  ca
+    });
+  });
+
+  if(!todos.length){ document.getElementById('comp-list').innerHTML='<p style="color:var(--text3);padding:20px;font-family:var(--mono);font-size:12px">Sin datos.</p>'; return; }
   todos.sort((a,b)=>b.tasa-a.tasa);
   const mx = todos[0].tasa;
   const med = ['🥇','🥈','🥉'];
+
   document.getElementById('comp-list').innerHTML = todos.map((item,i) => {
-    const w = (item.tasa/mx*100).toFixed(1);
-    const color = item.esPoliza ? 'var(--blue)' : 'var(--green)';
-    const chipCls = item.esPoliza ? 'chip-poliza' : item.tipo==='ahorro especial' ? 'chip-especial' : 'chip-ahorro';
-    const liqColor = item.liquidez==='inmediata'?'var(--green2)':'var(--amber)';
-    const instStr = encodeURIComponent(JSON.stringify(item.inst));
+    const w     = (item.tasa/mx*100).toFixed(1);
+    const liqOk = item.liquidez==='inmediata';
+    const liqColor = liqOk ? 'var(--green2)' : 'var(--amber)';
+    const liqIcon  = liqOk ? '✓' : '⏱';
+    // Serializar solo cuando se necesita para el onclick
+    const instStr = encodeURIComponent(JSON.stringify(item.rawInst));
     const fn = item.esPoliza
       ? `openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))`
       : `openDrawerAhorro(JSON.parse(decodeURIComponent('${instStr}')))`;
     return `<div class="comp-row" onclick="${fn}" style="cursor:pointer">
       <div class="rkpos">${i<3?med[i]:(i+1)}</div>
-      <div class="comp-info">
-        <div class="comp-name">${item.nombre}</div>
-        <span class="comp-tipo ${chipCls}">${item.tipo}</span>
+      <div style="display:flex;align-items:center;gap:8px;flex:1">
+        <div style="width:3px;height:30px;border-radius:2px;background:${item.color};flex-shrink:0"></div>
+        <div class="comp-info">
+          <div class="comp-name">${item.nombre}</div>
+          <div style="display:flex;gap:5px;align-items:center;margin-top:2px">
+            <span class="comp-tipo ${item.chipCls}">${item.tipo}</span>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--text3)">${item.subtitulo}</span>
+          </div>
+        </div>
       </div>
-      <div class="comp-bar-wrap"><div class="comp-bar-fill" style="width:${w}%;background:${i<3?color:'var(--border2)'}"></div></div>
-      <div class="comp-tasa" style="color:${i<3?color:'var(--text2)'}">${item.tasa.toFixed(2)}%</div>
-      <div class="comp-liq" style="color:${liqColor}">${item.liquidez}</div>
+      <div class="comp-bar-wrap"><div class="comp-bar-fill" style="width:${w}%;background:${i<3?item.color:'var(--border2)'}"></div></div>
+      <div class="comp-tasa" style="color:${i<3?item.color:'var(--text2)'}">${item.tasa.toFixed(2)}%</div>
+      <div class="comp-liq" style="color:${liqColor};font-family:var(--mono);font-size:9px">${liqIcon} ${item.liquidez}</div>
     </div>`;
   }).join('');
 }
 
 // ── Render ranking ───────────────────────────────────────────
+function renderRkAhorro() {
+  if(!DATA || !DATA.cuentasAhorro || !DATA.cuentasAhorro.length) return;
+  const sorted = [...DATA.cuentasAhorro].sort((a,b)=>b.tasa-a.tasa);
+  const mx = sorted[0].tasa;
+  const med = ['🥇','🥈','🥉'];
+  const el = document.getElementById('rkl-ahorro');
+  if(!el) return;
+  el.innerHTML = sorted.map((ca,i) => {
+    const w = (ca.tasa/mx*100).toFixed(1);
+    const [col] = getTipoColors(ca.tipo);
+    const liqOk = ca.liquidez==='inmediata';
+    const instStr = encodeURIComponent(JSON.stringify(ca));
+    return `<div class="rkrow" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent('${instStr}')))">
+      <div class="rkpos">${i<3?med[i]:(i+1)}</div>
+      <div style="display:flex;align-items:center;gap:8px;flex:1">
+        <div style="width:3px;height:28px;border-radius:2px;background:${col};flex-shrink:0"></div>
+        <div>
+          <div class="rkname">${ca.producto}</div>
+          <div style="display:flex;gap:6px;align-items:center;margin-top:2px">
+            <span style="font-family:var(--mono);font-size:9px;color:var(--text3)">${ca.banco}</span>
+            <span style="font-family:var(--mono);font-size:9px;padding:1px 5px;border-radius:2px;background:var(--bg3);border:1px solid var(--border);color:${liqOk?'var(--green2)':'var(--amber)'}">${liqOk?'✓ retiro libre':'⏱ restricción'}</span>
+          </div>
+        </div>
+      </div>
+      <div class="rkbar"><div class="rkfill" style="width:${w}%;background:${i<3?col:'var(--border2)'}"></div></div>
+      <div class="rktasa" style="color:${i<3?col:'var(--text2)'}">${ca.tasa.toFixed(2)}%</div>
+      <div class="rkliq" style="color:var(--text3);min-width:55px;font-size:9px">${ca.montoMin>0?'desde $'+ca.montoMin:'sin mín.'}</div>
+    </div>`;
+  }).join('');
+}
+
 function renderRk() {
   if(!DATA) return;
   const all = [...DATA.bancos,...DATA.cooperativas]
@@ -817,6 +897,7 @@ function renderAll() {
   renderTb(DATA.cooperativas,'tb-coops');
   renderAhorro();
   renderRk();
+  renderRkAhorro();
   const m = DATA.meta||{};
   document.getElementById('hdr-fecha').textContent = m.fechaActualizacion||'—';
   document.getElementById('hdr-inst').textContent = (m.totalInstituciones||'—')+' instituciones';
