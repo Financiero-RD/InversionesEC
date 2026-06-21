@@ -1,7 +1,7 @@
 {
   "meta": {
     "fechaActualizacion": "Junio 2026",
-    "fechaISO": "2026-06-10",
+    "fechaISO": "2026-06-16",
     "fuentePrincipal": "Tarifarios oficiales verificados — PDFs instituciones + Diario Expreso ene 2026",
     "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
     "notaVerificacion": "Tasas revisadas desde PDFs oficiales. CPN corregida: máximo 7.40% (no 9%). Tasas 2024 eliminadas.",
@@ -10,7 +10,11 @@
     "promedioBancos": 5.64,
     "promedioCoops": 6.85,
     "totalCuentasAhorro": 9,
-    "mejorAhorro": 6.0
+    "mejorAhorro": 6.0,
+    "totalVerificadas": 4,
+    "totalReferenciales": 9,
+    "alertaDesactualizacion": false,
+    "tasaReferencialBCE": 5.01
   },
   "bancos": [
     {
@@ -59,7 +63,11 @@
           "digital": 5.7,
           "agencia": 5.4
         }
-      ]
+      ],
+      "verificado": true,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Diario Expreso 07-ene-2026 + pichincha.com",
+      "tarifarioURL": "https://www.pichincha.com/detalle-catalogo/personas-inversiones"
     },
     {
       "id": "guayaquil",
@@ -107,7 +115,11 @@
           "digital": 5.85,
           "agencia": 5.5
         }
-      ]
+      ],
+      "verificado": true,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Diario Expreso 07-ene-2026",
+      "tarifarioURL": "https://www.bancoguayaquil.com/personas/inversiones"
     },
     {
       "id": "produbanco",
@@ -155,7 +167,11 @@
           "digital": 5.9,
           "agencia": 5.6
         }
-      ]
+      ],
+      "verificado": true,
+      "fechaVerificacion": "2026-01-01",
+      "fuenteVerificacion": "PDF tarifario oficial Produbanco ene-2026",
+      "tarifarioURL": "https://www.produbanco.com.ec/media/qzxmj524/tasas-01-ene-2026.pdf"
     },
     {
       "id": "internacional",
@@ -203,7 +219,11 @@
           "digital": 4.95,
           "agencia": 4.7
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bancointernacional.com.ec",
+      "tarifarioURL": "https://www.bancointernacional.com.ec/personas/inversiones"
     },
     {
       "id": "solidario",
@@ -251,7 +271,11 @@
           "digital": 5.85,
           "agencia": 5.55
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — Diario Expreso rango 4.55–5.85%",
+      "tarifarioURL": "https://www.banco-solidario.com/transparencia"
     },
     {
       "id": "pacifico",
@@ -298,7 +322,11 @@
           "digital": 5.5,
           "agencia": 5.2
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bancodelpacifico.com",
+      "tarifarioURL": "https://www.bancodelpacifico.com/personas/inversiones"
     },
     {
       "id": "ruminhahui",
@@ -344,7 +372,11 @@
           "digital": 5.75,
           "agencia": 5.5
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bgr.com.ec",
+      "tarifarioURL": "https://www.bgr.com.ec/tarifas-y-cargos"
     }
   ],
   "cooperativas": [
@@ -394,7 +426,11 @@
           "digital": 6.95,
           "agencia": 6.95
         }
-      ]
+      ],
+      "verificado": true,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "PDF tarifario oficial CPN marzo 2026",
+      "tarifarioURL": "https://www.cpn.fin.ec/frontend/web/pdf/tarifario-2026-03.pdf"
     },
     {
       "id": "jep",
@@ -442,7 +478,11 @@
           "digital": 7.0,
           "agencia": 7.0
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — ver jep.coop → Transparencia",
+      "tarifarioURL": "https://www.jep.coop/la-jep/transparencia/costos-financieros"
     },
     {
       "id": "jardin",
@@ -488,7 +528,11 @@
           "digital": 6.9,
           "agencia": 6.9
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en jardinazuayo.fin.ec",
+      "tarifarioURL": "https://www.jardinazuayo.fin.ec/certificado-de-deposito-o-deposito-a-plazo-fijo/"
     },
     {
       "id": "cooprogreso",
@@ -535,7 +579,11 @@
           "digital": 6.75,
           "agencia": 6.75
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en cooprogreso.fin.ec",
+      "tarifarioURL": "https://www.cooprogreso.fin.ec/transparencia"
     },
     {
       "id": "alianza",
@@ -581,7 +629,11 @@
           "digital": 6.75,
           "agencia": 6.75
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en alianzadelvalle.fin.ec",
+      "tarifarioURL": "https://www.alianzadelvalle.fin.ec/transparencia"
     },
     {
       "id": "octubre",
@@ -628,7 +680,11 @@
           "digital": 6.75,
           "agencia": 6.75
         }
-      ]
+      ],
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en 29deoctubre.fin.ec",
+      "tarifarioURL": "https://www.29deoctubre.fin.ec/transparencia"
     }
   ],
   "cuentasAhorro": [
