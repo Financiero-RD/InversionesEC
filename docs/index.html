@@ -320,11 +320,11 @@ footer{border-top:1px solid var(--border);padding:14px 24px;font-family:var(--mo
   <!-- ═══════════ VISTA: RANKING ═══════════ -->
   <div id="vista-ranking" style="display:none">
     <div id="rk-polizas-wrap">
-      <div class="sl">Pólizas / Plazo fijo · ranking por tasa (361+ días digital)</div>
+      <div class="sl">🔒 Pólizas / Plazo fijo · ranking por tasa (361+ días digital)</div>
       <div id="rkl"></div>
     </div>
     <div id="rk-ahorro-wrap" style="margin-top:28px">
-      <div class="sl">Cuentas de ahorro · ranking por tasa anual</div>
+      <div class="sl">💰 Cuentas de ahorro · ranking por tasa anual · liquidez inmediata</div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;font-family:var(--mono);font-size:10px;flex-wrap:wrap">
         <span style="color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:2px 8px;border-radius:3px">✓ retiro libre</span>
         <span style="color:var(--text3)">= puedes retirar cuando quieras</span>
@@ -432,12 +432,20 @@ const NOTAS = {
 function setProd(p, btn) {
   currentProd = p;
   document.querySelectorAll('.pt').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
+  if(btn) btn.classList.add('on');
   document.getElementById('nota-prod').innerHTML = NOTAS[p];
+
+  // Tabla: mostrar sección correcta
   document.getElementById('sec-polizas').style.display  = p==='polizas'  ? 'block':'none';
   document.getElementById('sec-ahorro').style.display   = p==='ahorro'   ? 'block':'none';
   document.getElementById('sec-comparar').style.display = p==='comparar' ? 'block':'none';
-  if (p==='comparar' && DATA) renderComparar();
+  if(p==='comparar' && DATA) renderComparar();
+
+  // Ranking: siempre mostrar ambas secciones (pólizas Y ahorro)
+  const rkP = document.getElementById('rk-polizas-wrap');
+  const rkA = document.getElementById('rk-ahorro-wrap');
+  if(rkP) rkP.style.display = 'block';
+  if(rkA) rkA.style.display = 'block';
 }
 
 // ── Vistas ──────────────────────────────────────────────────
@@ -447,6 +455,16 @@ function setVista(v, btn) {
     document.getElementById('vista-'+x).style.display = x===v ? 'block':'none');
   document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
   if(btn) btn.classList.add('on');
+  // Al entrar a la calculadora: inicializar resultados
+  if(v === 'calc') calcular();
+  // Al entrar al ranking: siempre mostrar ambas secciones
+  if(v === 'ranking'){
+    const rkP = document.getElementById('rk-polizas-wrap');
+    const rkA = document.getElementById('rk-ahorro-wrap');
+    if(rkP) rkP.style.display='block';
+    if(rkA) rkA.style.display='block';
+    if(DATA) renderRkAhorro();
+  }
 }
 
 // ── Calculadora ─────────────────────────────────────────────
@@ -517,10 +535,10 @@ function calcular() {
   if(nota){
     if(dias < 181){
       nota.innerHTML = `⚠️ <b>Retención SRI 3%</b> (plazo ${dias} días < 181): se descuentan <b>${fmt(retencion)}</b>. Invierte a <b>181+ días</b> (6+ meses) para quedar exento.`;
-      nota.style.background='#2A1F0D'; nota.style.borderColor='#4A3A1A'; nota.style.color='var(--amber)';
+      nota.style.background='var(--bg3)'; nota.style.borderColor='var(--amber)'; nota.style.color='var(--amber)';
     } else {
       nota.innerHTML = `✅ <b>Exento de retención SRI</b> — plazo ${dias} días ≥ 181 días. Recibes el <b>100%</b> de tus intereses netos.`;
-      nota.style.background='#0F2318'; nota.style.borderColor='#1A4A2A'; nota.style.color='var(--green2)';
+      nota.style.background='var(--gdim)'; nota.style.borderColor='var(--green2)'; nota.style.color='var(--green2)';
     }
   }
   // Alerta COSEDE
@@ -565,6 +583,7 @@ function useTasa(t, montoMin) {
 }
 
 function openDrawerPoliza(inst) {
+  if(!inst || !inst.tasas || !inst.tasas.length) return;
   const rows = inst.tasas.map(t =>
     `<tr><td style="color:var(--text2)">${t.plazo}</td><td>${t.digital.toFixed(2)}%</td><td style="color:var(--text3)">${t.agencia.toFixed(2)}%</td></tr>`
   ).join('');
@@ -578,7 +597,7 @@ function openDrawerPoliza(inst) {
         <div style="color:var(--text2)">Fuente: ${inst.fuenteVerificacion||'—'}</div>
         <div style="color:var(--text3);margin-top:2px">Verificación: ${inst.fechaVerificacion||'—'}</div>
        </div>`
-    : `<div style="background:#2A1F0D;border:1px solid #4A3A1A;border-radius:5px;padding:10px 12px;margin-top:12px;font-size:11px;line-height:1.5">
+    : `<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:5px;padding:10px 12px;margin-top:12px;font-size:11px;line-height:1.5">
         <div style="font-weight:700;color:var(--amber);margin-bottom:3px">⚠️ Tasa referencial</div>
         <div style="color:var(--text2)">Esta tasa es estimada. Verifica el dato exacto en el tarifario oficial.</div>
         ${inst.tarifarioURL ? `<a href="${inst.tarifarioURL}" target="_blank" style="color:var(--blue);font-family:var(--mono);font-size:10px;display:block;margin-top:6px;word-break:break-all">🔗 Ver tarifario oficial →</a>` : ''}
@@ -676,14 +695,14 @@ function renderTb(insts, id) {
         <div class="rb" style="width:${w}px;background:${best?'#fff':color};opacity:${best?'0.9':'0.4'}"></div>
       </td>`;
     }).join('');
-    const instStr = encodeURIComponent(JSON.stringify(inst));
+    const instStr = btoa(unescape(encodeURIComponent(JSON.stringify(inst))));
     const montoFiltro = parseFloat(document.getElementById('cc')?.value)||0;
     const noCalifica = montoFiltro > 0 && inst.montoMin > montoFiltro;
     const esVerificado = inst.verificado === true;
     const vBadge = esVerificado
       ? `<span style="font-family:var(--mono);font-size:8px;color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:1px 5px;border-radius:2px;margin-left:5px">✓ verificado</span>`
       : `<span style="font-family:var(--mono);font-size:8px;color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:1px 5px;border-radius:2px;margin-left:5px">~ referencial</span>`;
-    return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))"
+    return `<tr onclick="openDrawerPoliza(JSON.parse(decodeURIComponent(escape(atob('${instStr}')))))"
       style="${noCalifica?'opacity:0.38;':''}">
       <td>
         <div style="display:flex;align-items:center;gap:8px">
@@ -728,8 +747,8 @@ function renderAhorro() {
       ? '<span class="ac-tag green">✓ Retiro libre</span>'
       : '<span class="ac-tag amber">⚠ Con restricción</span>';
     const esBest = ca.tasa === maxT;
-    const caStr = encodeURIComponent(JSON.stringify(ca));
-    return `<div class="ahorro-card" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent('${caStr}')))"
+    const caStr = btoa(unescape(encodeURIComponent(JSON.stringify(ca))));
+    return `<div class="ahorro-card" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent(escape(atob('${caStr}')))))"
       style="border-color:${esBest?col:'var(--border)'};background:${bg}">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${col};border-radius:8px 8px 0 0"></div>
       <div class="ac-header">
@@ -804,10 +823,10 @@ function renderComparar() {
     const liqColor = liqOk ? 'var(--green2)' : 'var(--amber)';
     const liqIcon  = liqOk ? '✓' : '⏱';
     // Serializar solo cuando se necesita para el onclick
-    const instStr = encodeURIComponent(JSON.stringify(item.rawInst));
+    const instStr = btoa(unescape(encodeURIComponent(JSON.stringify(item.rawInst))));
     const fn = item.esPoliza
-      ? `openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))`
-      : `openDrawerAhorro(JSON.parse(decodeURIComponent('${instStr}')))`;
+      ? `openDrawerPoliza(JSON.parse(decodeURIComponent(escape(atob('${instStr}')))))`
+      : `openDrawerAhorro(JSON.parse(decodeURIComponent(escape(atob('${instStr}')))))`;
     return `<div class="comp-row" onclick="${fn}" style="cursor:pointer">
       <div class="rkpos">${i<3?med[i]:(i+1)}</div>
       <div style="display:flex;align-items:center;gap:8px;flex:1">
@@ -834,13 +853,14 @@ function renderRkAhorro() {
   const mx = sorted[0].tasa;
   const med = ['🥇','🥈','🥉'];
   const el = document.getElementById('rkl-ahorro');
-  if(!el) return;
+  if(!el){ console.warn('rkl-ahorro no encontrado'); return; }
+  if(!sorted.length){ el.innerHTML='<p style="color:var(--text3);font-family:var(--mono);font-size:12px;padding:20px 0">Sin cuentas de ahorro en los datos.</p>'; return; }
   el.innerHTML = sorted.map((ca,i) => {
     const w = (ca.tasa/mx*100).toFixed(1);
     const [col] = getTipoColors(ca.tipo);
     const liqOk = ca.liquidez==='inmediata';
-    const instStr = encodeURIComponent(JSON.stringify(ca));
-    return `<div class="rkrow" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent('${instStr}')))">
+    const instStr = btoa(unescape(encodeURIComponent(JSON.stringify(ca))));
+    return `<div class="rkrow" onclick="openDrawerAhorro(JSON.parse(decodeURIComponent(escape(atob('${instStr}')))))">
       <div class="rkpos">${i<3?med[i]:(i+1)}</div>
       <div style="display:flex;align-items:center;gap:8px;flex:1">
         <div style="width:3px;height:28px;border-radius:2px;background:${col};flex-shrink:0"></div>
@@ -869,8 +889,8 @@ function renderRk() {
     const t=Math.max(...inst.tasas.map(x=>x.digital));
     const w=(t/mx*100).toFixed(1);
     const color = inst.color || 'var(--green)';
-    const instStr=encodeURIComponent(JSON.stringify(inst));
-    return `<div class="rkrow" onclick="openDrawerPoliza(JSON.parse(decodeURIComponent('${instStr}')))">
+    const instStr=btoa(unescape(encodeURIComponent(JSON.stringify(inst))));
+    return `<div class="rkrow" onclick="openDrawerPoliza(JSON.parse(decodeURIComponent(escape(atob('${instStr}')))))">
       <div class="rkpos">${i<3?med[i]:(i+1)}</div>
       <div style="display:flex;align-items:center;gap:8px;flex:1">
         <div style="width:3px;height:28px;border-radius:2px;background:${color};flex-shrink:0"></div>
@@ -878,7 +898,7 @@ function renderRk() {
           <div class="rkname">${inst.nombre}
             ${inst.verificado
               ? `<span style="font-family:var(--mono);font-size:8px;color:var(--green2);background:var(--gdim);border:1px solid var(--green2);padding:1px 5px;border-radius:2px;margin-left:5px">✓</span>`
-              : `<span style="font-family:var(--mono);font-size:8px;color:var(--amber);background:#2A1F0D;border:1px solid #4A3A1A;padding:1px 5px;border-radius:2px;margin-left:5px">~</span>`}
+              : `<span style="font-family:var(--mono);font-size:8px;color:var(--amber);background:var(--bg3);border:1px solid var(--amber);padding:1px 5px;border-radius:2px;margin-left:5px">~</span>`}
           </div>
           <span class="rktype ${inst.tipo==='banco'?'cAA':'cAAA'}">${inst.tipo==='banco'?'Banco':'Coop'}</span>
         </div>
@@ -935,15 +955,21 @@ const URLS = [
 (async function loadData(){
   for(const url of URLS){
     try{
-      const r = await fetch(url);
+      const controller = new AbortController();
+      const tid = setTimeout(() => controller.abort(), 8000); // 8s timeout
+      const r = await fetch(url, { signal: controller.signal });
+      clearTimeout(tid);
       if(!r.ok) continue;
-      DATA = await r.json();
+      const json = await r.json();
+      if(!json.bancos || !json.cooperativas) continue; // validar estructura
+      DATA = json;
       renderAll();
+      calcular(); // inicializar calculadora con datos
       return;
     }catch(e){ continue; }
   }
   document.getElementById('sdot').className='sdot';
-  document.getElementById('stxt').textContent='⚠ No se pudieron cargar los datos. Verifica tu conexión.';
+  document.getElementById('stxt').textContent='⚠ No se pudieron cargar los datos. Verifica tu conexión o intenta más tarde.';
 })();
 </script>
 </body>
