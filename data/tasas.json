@@ -1,20 +1,21 @@
 {
   "meta": {
-    "fechaActualizacion": "Junio 2026",
-    "fechaISO": "2026-06-16",
-    "fuentePrincipal": "Tarifarios oficiales verificados — PDFs instituciones + Diario Expreso ene 2026",
+    "fechaActualizacion": "July 2026",
+    "fechaISO": "2026-07-02",
+    "tasaReferencialBCE": 4.12,
+    "fuentePrincipal": "Tarifarios oficiales verificados + BCE + fuentes periodísticas",
     "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
-    "notaVerificacion": "Tasas revisadas desde PDFs oficiales. CPN corregida: máximo 7.40% (no 9%). Tasas 2024 eliminadas.",
-    "notaImpuesto": "Desde marzo 2026: retención SRI 3% sobre intereses en depósitos < 180 días. Exento a 181+ días.",
     "totalInstituciones": 13,
-    "promedioBancos": 5.64,
-    "promedioCoops": 6.85,
-    "totalCuentasAhorro": 9,
-    "mejorAhorro": 6.0,
     "totalVerificadas": 4,
     "totalReferenciales": 9,
-    "alertaDesactualizacion": false,
-    "tasaReferencialBCE": 5.01
+    "diasDesdeUltimaVerificacion": 182,
+    "alertaDesactualizacion": true,
+    "promedioBancos": 5.64,
+    "promedioCoops": 6.85,
+    "mejorAhorro": 6.0,
+    "totalCuentasAhorro": 9,
+    "notaTransparencia": "4 instituciones con datos verificados desde tarifarios oficiales. 9 instituciones con tasas referenciales estimadas. Siempre verifica en el tarifario oficial antes de invertir.",
+    "notaImpuesto": "Desde marzo 2026: retención SRI 3% en depósitos < 181 días. Exento a 181+ días."
   },
   "bancos": [
     {
@@ -25,10 +26,12 @@
       "seguro": 32000,
       "montoMin": 500,
       "color": "#FFD100",
+      "tarifarioURL": "https://www.pichincha.com/detalle-catalogo/personas-inversiones",
+      "verificado": true,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Diario Expreso 07-ene-2026 + pichincha.com",
+      "notaTasa": "Tasas para montos $500–$4,999 canal digital. Montos mayores: tasas superiores hasta 6.20%.",
       "web": "pichincha.com",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Tasas para montos $500–$4,999 en canal digital. Montos mayores reciben tasas ligeramente superiores.",
       "pasos": [
         "Descarga la app Banco Pichincha",
         "Ve a Inversiones → Plazodolar",
@@ -64,10 +67,7 @@
           "agencia": 5.4
         }
       ],
-      "verificado": true,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Diario Expreso 07-ene-2026 + pichincha.com",
-      "tarifarioURL": "https://www.pichincha.com/detalle-catalogo/personas-inversiones"
+      "fechaMes": "July 2026"
     },
     {
       "id": "guayaquil",
@@ -77,17 +77,18 @@
       "seguro": 32000,
       "montoMin": 500,
       "color": "#E3051B",
+      "tarifarioURL": "https://www.bancoguayaquil.com/personas/inversiones/deposito-a-plazo",
+      "verificado": true,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Diario Expreso 07-ene-2026",
+      "notaTasa": "Tasas para personas naturales canal digital.",
       "web": "bancoguayaquil.com",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Tasas para personas naturales en canal digital. Montos desde $500.",
       "pasos": [
         "App o web bancoguayaquil.com",
         "Inversiones → Depósito a Plazo",
         "Mínimo $500",
         "Acepta términos y confirma",
-        "Certificado digital en tu correo",
-        "Monitorea desde banca en línea"
+        "Certificado digital en tu correo"
       ],
       "tasas": [
         {
@@ -116,10 +117,7 @@
           "agencia": 5.5
         }
       ],
-      "verificado": true,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Diario Expreso 07-ene-2026",
-      "tarifarioURL": "https://www.bancoguayaquil.com/personas/inversiones"
+      "fechaMes": "July 2026"
     },
     {
       "id": "produbanco",
@@ -129,17 +127,18 @@
       "seguro": 32000,
       "montoMin": 100,
       "color": "#00A650",
+      "tarifarioURL": "https://www.produbanco.com.ec/media/qzxmj524/tasas-01-ene-2026.pdf",
+      "verificado": true,
+      "fechaVerificacion": "2026-01-01",
+      "fuenteVerificacion": "PDF tarifario oficial Produbanco ene-2026",
+      "notaTasa": "Tasas para $100–$10,000. Montos >$250,000: hasta 5.90%.",
       "web": "produbanco.com.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Tasas para montos $100–$10,000. Montos >$250,000 acceden a tasa máxima 5.90%.",
       "pasos": [
         "produbanco.com.ec → Personas → Inversiones",
         "Selecciona Póliza de Acumulación",
         "Mínimo $100",
-        "Elige plazo y confirma tasa",
-        "Firma electrónica desde la app",
-        "Renovación automática opcional"
+        "Elige plazo y confirma",
+        "Firma electrónica desde la app"
       ],
       "tasas": [
         {
@@ -168,10 +167,7 @@
           "agencia": 5.6
         }
       ],
-      "verificado": true,
-      "fechaVerificacion": "2026-01-01",
-      "fuenteVerificacion": "PDF tarifario oficial Produbanco ene-2026",
-      "tarifarioURL": "https://www.produbanco.com.ec/media/qzxmj524/tasas-01-ene-2026.pdf"
+      "fechaMes": "July 2026"
     },
     {
       "id": "internacional",
@@ -181,17 +177,17 @@
       "seguro": 32000,
       "montoMin": 1000,
       "color": "#F47920",
+      "tarifarioURL": "https://www.bancointernacional.com.ec/personas/inversiones",
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bancointernacional.com.ec",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en bancointernacional.com.ec → Transparencia → Tarifario.",
       "web": "bancointernacional.com.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Mínimo $1,000. Tasas superiores para montos >$50,000.",
       "pasos": [
         "bancointernacional.com.ec",
-        "Abre cuenta o usa la existente",
         "Inversiones → Plazo Fijo",
         "Mínimo $1,000",
-        "Confirma tasa y firma",
-        "Certificado en banca digital"
+        "Confirma tasa y firma"
       ],
       "tasas": [
         {
@@ -220,10 +216,7 @@
           "agencia": 4.7
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Referencial — verificar en bancointernacional.com.ec",
-      "tarifarioURL": "https://www.bancointernacional.com.ec/personas/inversiones"
+      "fechaMes": "July 2026"
     },
     {
       "id": "solidario",
@@ -233,17 +226,17 @@
       "seguro": 32000,
       "montoMin": 1000,
       "color": "#E31837",
+      "tarifarioURL": "https://www.banco-solidario.com/transparencia",
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — Diario Expreso menciona rango 4.55–5.85%",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en banco-solidario.com → Transparencia → Tarifario.",
       "web": "banco-solidario.com",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Tasas desde 4.55% hasta 5.85% según plazo. Mínimo $1,000.",
       "pasos": [
-        "banco-solidario.com",
-        "Cuenta 100% digital",
+        "banco-solidario.com (proceso 100% digital)",
         "Inversión a Plazo desde la app",
         "Mínimo $1,000",
-        "Firma electrónica",
-        "Retiras al vencer"
+        "Firma electrónica"
       ],
       "tasas": [
         {
@@ -272,10 +265,7 @@
           "agencia": 5.55
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Referencial — Diario Expreso rango 4.55–5.85%",
-      "tarifarioURL": "https://www.banco-solidario.com/transparencia"
+      "fechaMes": "July 2026"
     },
     {
       "id": "pacifico",
@@ -285,16 +275,17 @@
       "seguro": 32000,
       "montoMin": 500,
       "color": "#005BAC",
+      "tarifarioURL": "https://www.bancodelpacifico.com/personas/inversiones",
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bancodelpacifico.com → Transparencia",
+      "notaTasa": "⚠️ Tasa referencial. Banco estatal. Verificar en bancodelpacifico.com → Transparencia → Tarifario.",
       "web": "bancodelpacifico.com",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Banco estatal. Tasas competitivas. Desde $500.",
       "pasos": [
         "bancodelpacifico.com o app",
         "Depósito a Plazo Fijo",
         "Mínimo $500",
-        "Intereses al vencer o periódicos",
-        "Certificado en tu correo"
+        "Intereses al vencer o periódicos"
       ],
       "tasas": [
         {
@@ -323,10 +314,7 @@
           "agencia": 5.2
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Referencial — verificar en bancodelpacifico.com",
-      "tarifarioURL": "https://www.bancodelpacifico.com/personas/inversiones"
+      "fechaMes": "July 2026"
     },
     {
       "id": "ruminhahui",
@@ -336,14 +324,16 @@
       "seguro": 32000,
       "montoMin": 200,
       "color": "#1B3A6B",
+      "tarifarioURL": "https://www.bgr.com.ec/tarifas-y-cargos",
+      "verificado": false,
+      "fechaVerificacion": "2026-01-07",
+      "fuenteVerificacion": "Referencial — verificar en bgr.com.ec → Tarifas y cargos",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en bgr.com.ec → Transparencia → Tarifario.",
       "web": "bgr.com.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Banco orientado a FF.AA. pero abierto al público. Desde $200.",
       "pasos": [
         "bgr.com.ec → Inversiones → BGR Rentaplazos",
         "Mínimo $200",
-        "Elige plazo en app BGR Digital",
+        "App BGR Digital",
         "Intereses al vencer o periódicos"
       ],
       "tasas": [
@@ -373,10 +363,7 @@
           "agencia": 5.5
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-01-07",
-      "fuenteVerificacion": "Referencial — verificar en bgr.com.ec",
-      "tarifarioURL": "https://www.bgr.com.ec/tarifas-y-cargos"
+      "fechaMes": "July 2026"
     }
   ],
   "cooperativas": [
@@ -388,17 +375,19 @@
       "seguro": 32000,
       "montoMin": 500,
       "color": "#003087",
+      "tarifarioURL": "https://www.cpn.fin.ec/frontend/web/pdf/tarifario-2026-03.pdf",
+      "verificado": true,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "PDF tarifario oficial CPN marzo 2026 — cpn.fin.ec",
+      "notaTasa": "✅ Verificado. Tasas para $500–$10,000. Montos $10K–$50K y +$50K tienen tasas superiores (hasta 7.40%).",
       "web": "cpn.fin.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "✅ Verificado tarifario PDF marzo 2026. Tasas por tramos de monto: $500–$10K / $10K–$50K / $50K+. Tabla muestra tasa media ($500–$10K).",
       "pasos": [
-        "cpn.fin.ec o agencia",
-        "Membresía como socio (abierto al público)",
-        "Cédula + planilla + $500 mínimo",
+        "cpn.fin.ec o agencia física",
+        "Solicita membresía como socio (abierto al público)",
+        "Cédula + planilla + mínimo $500",
         "Abre cuenta de ahorros",
         "Solicita Certificado de Depósito a Plazo",
-        "Tasas mejoran con montos mayores"
+        "Mayor monto = mayor tasa"
       ],
       "tasas": [
         {
@@ -427,10 +416,7 @@
           "agencia": 6.95
         }
       ],
-      "verificado": true,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "PDF tarifario oficial CPN marzo 2026",
-      "tarifarioURL": "https://www.cpn.fin.ec/frontend/web/pdf/tarifario-2026-03.pdf"
+      "fechaMes": "July 2026"
     },
     {
       "id": "jep",
@@ -440,17 +426,18 @@
       "seguro": 32000,
       "montoMin": 100,
       "color": "#FF6600",
+      "tarifarioURL": "https://www.jep.coop/la-jep/transparencia/costos-financieros",
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — PDF JEP mar-2026 no contiene tabla de tasas pasivas",
+      "notaTasa": "⚠️ Tasa referencial. Ver tabla actualizada en jep.coop → Transparencia → Tasas Personas Naturales.",
       "web": "jep.coop",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Tasas varían por monto y plazo. Mínimo $100. Verificar tabla actualizada en jep.coop.",
       "pasos": [
-        "jep.coop o cualquier agencia",
+        "jep.coop o cualquier agencia JEP",
         "Cuenta desde $100",
-        "Certificado de depósito a plazo",
-        "Más plazo = más tasa",
-        "Certificado físico o digital",
-        "Capital + intereses al vencer"
+        "Solicita InversionesJEP",
+        "Elige plazo — más plazo = más tasa",
+        "Certificado físico o digital"
       ],
       "tasas": [
         {
@@ -479,10 +466,7 @@
           "agencia": 7.0
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "Referencial — ver jep.coop → Transparencia",
-      "tarifarioURL": "https://www.jep.coop/la-jep/transparencia/costos-financieros"
+      "fechaMes": "July 2026"
     },
     {
       "id": "jardin",
@@ -492,14 +476,16 @@
       "seguro": 32000,
       "montoMin": 50,
       "color": "#009B3A",
+      "tarifarioURL": "https://www.jardinazuayo.fin.ec/certificado-de-deposito-o-deposito-a-plazo-fijo/",
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — sitio solo muestra info general, no tabla de tasas",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en jardinazuayo.fin.ec → Certificado de Depósito.",
       "web": "jardinazuayo.fin.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Desde $50. Tasas referenciales — verificar en jardinazuayo.fin.ec.",
       "pasos": [
         "jardinazuayo.fin.ec — desde $50",
-        "Cuenta como socio",
-        "Depósito a Plazo",
+        "Cuenta como socio en cualquier agencia",
+        "Solicita Depósito a Plazo",
         "Intereses mensuales o al vencer"
       ],
       "tasas": [
@@ -529,10 +515,7 @@
           "agencia": 6.9
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "Referencial — verificar en jardinazuayo.fin.ec",
-      "tarifarioURL": "https://www.jardinazuayo.fin.ec/certificado-de-deposito-o-deposito-a-plazo-fijo/"
+      "fechaMes": "July 2026"
     },
     {
       "id": "cooprogreso",
@@ -542,16 +525,17 @@
       "seguro": 32000,
       "montoMin": 200,
       "color": "#C8002E",
+      "tarifarioURL": "https://www.cooprogreso.fin.ec/transparencia",
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en cooprogreso.fin.ec → Transparencia",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en cooprogreso.fin.ec → Transparencia → Tarifario.",
       "web": "cooprogreso.fin.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Cobertura nacional. Segmento 1. Verificar tasas actualizadas en cooprogreso.fin.ec.",
       "pasos": [
         "cooprogreso.fin.ec",
         "Agencia más cercana",
         "Cédula + $200",
-        "Póliza de Inversión",
-        "Confirma y firma"
+        "Póliza de Inversión a Plazo"
       ],
       "tasas": [
         {
@@ -580,10 +564,7 @@
           "agencia": 6.75
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "Referencial — verificar en cooprogreso.fin.ec",
-      "tarifarioURL": "https://www.cooprogreso.fin.ec/transparencia"
+      "fechaMes": "July 2026"
     },
     {
       "id": "alianza",
@@ -593,15 +574,17 @@
       "seguro": 32000,
       "montoMin": 100,
       "color": "#7B2D8B",
+      "tarifarioURL": "https://www.alianzadelvalle.fin.ec/transparencia",
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en alianzadelvalle.fin.ec",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en alianzadelvalle.fin.ec → Transparencia.",
       "web": "alianzadelvalle.fin.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "Quito y valles. Verificar en alianzadelvalle.fin.ec.",
       "pasos": [
         "alianzadelvalle.fin.ec",
-        "Quito y valles",
+        "Agencias en Quito y valles",
         "Cuenta desde $100",
-        "Depósito a Plazo"
+        "Depósito a Plazo Fijo"
       ],
       "tasas": [
         {
@@ -630,10 +613,7 @@
           "agencia": 6.75
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "Referencial — verificar en alianzadelvalle.fin.ec",
-      "tarifarioURL": "https://www.alianzadelvalle.fin.ec/transparencia"
+      "fechaMes": "July 2026"
     },
     {
       "id": "octubre",
@@ -643,16 +623,17 @@
       "seguro": 32000,
       "montoMin": 200,
       "color": "#1A5C2A",
+      "tarifarioURL": "https://www.29deoctubre.fin.ec/transparencia",
+      "verificado": false,
+      "fechaVerificacion": "2026-03-01",
+      "fuenteVerificacion": "Referencial — verificar en 29deoctubre.fin.ec",
+      "notaTasa": "⚠️ Tasa referencial. Verificar en 29deoctubre.fin.ec → Transparencia → Tarifario.",
       "web": "29deoctubre.fin.ec",
-      "fechaMes": "Junio 2026",
-      "esNuevo": false,
-      "notaTasa": "34 agencias nacionales. Vinculada a FF.AA. Verificar en 29deoctubre.fin.ec.",
       "pasos": [
         "29deoctubre.fin.ec",
         "34 agencias nacionales",
         "Cédula + $200",
-        "Certificado a Plazo",
-        "App móvil disponible"
+        "Certificado de Depósito a Plazo"
       ],
       "tasas": [
         {
@@ -681,10 +662,7 @@
           "agencia": 6.75
         }
       ],
-      "verificado": false,
-      "fechaVerificacion": "2026-03-01",
-      "fuenteVerificacion": "Referencial — verificar en 29deoctubre.fin.ec",
-      "tarifarioURL": "https://www.29deoctubre.fin.ec/transparencia"
+      "fechaMes": "July 2026"
     }
   ],
   "cuentasAhorro": [
