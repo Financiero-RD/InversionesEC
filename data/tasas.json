@@ -1,14 +1,14 @@
 {
   "meta": {
-    "fechaActualizacion": "August 2026",
-    "fechaISO": "2026-08-02",
-    "tasaReferencialBCE": 4.12,
+    "fechaActualizacion": "September 2026",
+    "fechaISO": "2026-09-02",
+    "tasaReferencialBCE": null,
     "fuentePrincipal": "Tarifarios oficiales verificados + BCE + fuentes periodísticas",
     "proximaActualizacion": "Día 2 del próximo mes (GitHub Actions)",
     "totalInstituciones": 13,
     "totalVerificadas": 4,
     "totalReferenciales": 9,
-    "diasDesdeUltimaVerificacion": 213,
+    "diasDesdeUltimaVerificacion": 244,
     "alertaDesactualizacion": true,
     "promedioBancos": 5.64,
     "promedioCoops": 6.85,
@@ -67,7 +67,7 @@
           "agencia": 5.4
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "guayaquil",
@@ -117,7 +117,7 @@
           "agencia": 5.5
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "produbanco",
@@ -167,7 +167,7 @@
           "agencia": 5.6
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "internacional",
@@ -216,7 +216,7 @@
           "agencia": 4.7
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "solidario",
@@ -265,7 +265,7 @@
           "agencia": 5.55
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "pacifico",
@@ -314,7 +314,7 @@
           "agencia": 5.2
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "ruminhahui",
@@ -363,7 +363,7 @@
           "agencia": 5.5
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     }
   ],
   "cooperativas": [
@@ -416,7 +416,7 @@
           "agencia": 6.95
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "jep",
@@ -466,7 +466,7 @@
           "agencia": 7.0
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "jardin",
@@ -515,7 +515,7 @@
           "agencia": 6.9
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "cooprogreso",
@@ -564,7 +564,7 @@
           "agencia": 6.75
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "alianza",
@@ -613,7 +613,7 @@
           "agencia": 6.75
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     },
     {
       "id": "octubre",
@@ -662,7 +662,7 @@
           "agencia": 6.75
         }
       ],
-      "fechaMes": "August 2026"
+      "fechaMes": "September 2026"
     }
   ],
   "cuentasAhorro": [
